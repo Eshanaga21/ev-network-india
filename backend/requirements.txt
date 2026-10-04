@@ -1,0 +1,12 @@
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+pydantic>=2.9,<3
+python-multipart>=0.0.18
+pandas>=2.2,<3
+numpy>=2.0,<3
+networkx>=3.4,<4
+httpx>=0.28,<1
+scikit-learn>=1.5,<2
+pytest>=8,<10
+ruff>=0.12,<1
+python-dotenv>=1.2,<2

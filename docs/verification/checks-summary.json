@@ -1,0 +1,60 @@
+{
+  "recorded_at": "2026-10-04T09:49:06.017808+00:00",
+  "results": {
+    "backend_pytest": {
+      "passed": 60,
+      "warnings": [
+        "Starlette/httpx test-client deprecation",
+        "AnyIO BlockingPortal alias deprecation"
+      ]
+    },
+    "ruff_lint": "passed",
+    "ruff_format": "passed",
+    "frontend_vitest": {
+      "passed": 20
+    },
+    "eslint": "passed",
+    "prettier": "passed",
+    "typescript_vite_build": "passed",
+    "npm_vulnerabilities": 0,
+    "build_warning": "large shared MapLibre chunk; academic console is optional/lazy",
+    "browser_download_completion": "not observable; export-generation unit tests and independent report verification passed"
+  },
+  "evidence": "Current user-provided CSV: user-dataset-import.json and loaded-dataset-verification.json. Earlier screenshots/audits are labeled historical. Summary records completed checks, not raw console transcripts. Any-point/API evidence: door-to-door-verification.json; Gemini adapter implemented, supplied key returned HTTP 401 and local replacement confirmation is pending.",
+  "browser": {
+    "screenshots": 34,
+    "viewport_override_reset": true,
+    "final_preview_http": 200,
+    "backend_health": "ok",
+    "active_validated_records": 1331,
+    "navigation_resets_sidebar": true,
+    "keyboard_dialog_focus_cycle_and_escape": "verified",
+    "console_errors_on_final_check": 0,
+    "visible_regional_records": 282,
+    "excluded_geographic_conflicts": 68,
+    "source_snapshot": "2ee144cf5153486e90e9cd0ba969a857",
+    "mobile": {
+      "viewport": 390,
+      "page_width": 390
+    },
+    "tablet": {
+      "viewport": 1024,
+      "page_width": 1024
+    },
+    "address_search": "Public India Gate resolves actual Photon coordinates; addresses remain separate from station records",
+    "current_trip": "India Gate \u2192 Heritage City; OSRM 24.353 km, 27.343 min, modeled SOC 72.207%",
+    "current_no_path": "Geographic academic no-path remains valid; road journeys are independent of station-graph connectivity",
+    "academic_entry_and_return": "verified",
+    "manual_coordinates": "Typed latitude/longitude selected via Enter",
+    "map_selection": "Actual map click chooses destination, A/B preview markers shown",
+    "swap_and_clear": "Verified; swap remounts fields to cancel stale device requests",
+    "device_location": "Explicit request implemented; helper success/accuracy/denial/timeout/unsupported/invalid-coordinate tests passed. Actual device permission was not requested.",
+    "mobile_any_point": {
+      "requested_viewport": 390,
+      "css_viewport": 390,
+      "page_width": 390,
+      "horizontal_overflow": false
+    },
+    "gemini": "Implemented server-side; authentication pending corrected local key after HTTP 401"
+  }
+}

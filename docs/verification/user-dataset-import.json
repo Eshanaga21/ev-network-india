@@ -1,0 +1,1748 @@
+{
+  "source_name": "User-provided archive.zip / EV charging stations India",
+  "source_url": null,
+  "filename": "ev-charging-stations-india.csv",
+  "imported_at": "2026-10-04T08:59:31.325637+00:00",
+  "raw_sha256": "c6a8f921195877a474c47c7a524e117bc72e18f6ba4f39a4f73865bcd1092f20",
+  "raw_records": 1547,
+  "valid_records": 1331,
+  "rejected_records": 14,
+  "duplicate_ids_removed": 202,
+  "duplicate_source_rows_removed": 202,
+  "derived_id_records": 1331,
+  "identity_policy": "Missing source IDs use SHA-256 of the source row as an internal record key; not an observed station identifier. Identical source rows collapse; co-located distinct records remain separate.",
+  "source_type_interpretation": "Raw source code, with no supplied definition; not a connector, charger count or power value.",
+  "missing_fields": {
+    "station_id": 0,
+    "station_name": 0,
+    "latitude": 0,
+    "longitude": 0,
+    "city": 0,
+    "state": 0,
+    "country": 1331,
+    "operator": 1331,
+    "status": 1331,
+    "availability": 1331,
+    "connector_type": 1331,
+    "num_chargers": 1331,
+    "charging_power_kw": 1331,
+    "address": 39,
+    "source_type": 8
+  },
+  "mapping": {
+    "station_id": null,
+    "station_name": "name",
+    "latitude": "lattitude",
+    "longitude": "longitude",
+    "city": "city",
+    "state": "state",
+    "country": null,
+    "operator": null,
+    "status": null,
+    "availability": null,
+    "connector_type": null,
+    "num_chargers": null,
+    "charging_power_kw": null,
+    "address": "address",
+    "source_type": "type"
+  },
+  "columns": [
+    "name",
+    "state",
+    "city",
+    "address",
+    "lattitude",
+    "longitude",
+    "type"
+  ],
+  "rejections": [
+    {
+      "row": 96,
+      "station_id": "record:d0ed61d93498dc7bcc7bdf7eb7d21590dea88c627625507d6a531a8043083008",
+      "reason": "Outside India geographic envelope (6\u201338\u00b0N, 68\u201398\u00b0E)"
+    },
+    {
+      "row": 376,
+      "station_id": "record:f90e95be507591c64444a75662b99e1a95d884de5ddcefbfe50c76d2ccf49ef4",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 406,
+      "station_id": "record:c5b2135fcb69239790d8cb9137b2e5f0e6c81fa7100f1d643152f86429771985",
+      "reason": "Outside India geographic envelope (6\u201338\u00b0N, 68\u201398\u00b0E)"
+    },
+    {
+      "row": 468,
+      "station_id": "record:f815ae5ce653a2d18837534bdc5c8d1188dd194b67e11e52cf9e78e212ca73ef",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 469,
+      "station_id": "record:4c74027c631ed08ff47272d2f1f5f073051b2a1514b4ea436d0c3ac4b7ffa062",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 510,
+      "station_id": "record:cc62d7f04b24c1ad7530eb07209c45f25f5623392ee0117b66270f319e5a7f33",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 524,
+      "station_id": "record:c9f78182991858c12ffe3804ef658e96e4a2e595cd9586f096649c65ac748e5f",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 533,
+      "station_id": "record:8af3873427df41f55747244e88d44510165e22cca04250b1145d1d710c4bbe9d",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 578,
+      "station_id": "record:a11cf36ad44f3c7c38e7d2e7cca6a6352ba508fe1e2316c6db874eb3d2bf3d1d",
+      "reason": "Outside India geographic envelope (6\u201338\u00b0N, 68\u201398\u00b0E)"
+    },
+    {
+      "row": 603,
+      "station_id": "record:1622d903f574b2dac46b2e17c7a720a8f3bedf42fc948f1e30cf33e95b34eba1",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 908,
+      "station_id": "record:df54bf4f629fc190d236c610495c6fe47b806abe4952ae003ddf47385b1861a9",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 948,
+      "station_id": "record:cc62d7f04b24c1ad7530eb07209c45f25f5623392ee0117b66270f319e5a7f33",
+      "reason": "Invalid or missing coordinates"
+    },
+    {
+      "row": 1090,
+      "station_id": "record:a11cf36ad44f3c7c38e7d2e7cca6a6352ba508fe1e2316c6db874eb3d2bf3d1d",
+      "reason": "Outside India geographic envelope (6\u201338\u00b0N, 68\u201398\u00b0E)"
+    },
+    {
+      "row": 1348,
+      "station_id": "record:df54bf4f629fc190d236c610495c6fe47b806abe4952ae003ddf47385b1861a9",
+      "reason": "Invalid or missing coordinates"
+    }
+  ],
+  "duplicates": [
+    {
+      "row": 556,
+      "station_id": "record:355ea076179e9671273eb10a4d069b26e6d9a1b01eb7d2ae696b45b22a396aea",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 580,
+      "station_id": "record:26020bf3763c7c5d71bdc1aabb3f08616744d656ecfbba71a342020f6ad7eaa9",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 831,
+      "station_id": "record:568e1fa846e65f47f1c261f9344e1014319fdcd8c100c5431779fa962fa18a77",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 833,
+      "station_id": "record:8eb97b9d8614e4f5686c1dafa181745fd25f29ee6200ecf60ce1a5592c1f9ca5",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 838,
+      "station_id": "record:f1e93e4a9b8aa8df6d2bfaca29704dd654ff0963fe4d77f0673d66bfd03f00a0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 842,
+      "station_id": "record:f1e93e4a9b8aa8df6d2bfaca29704dd654ff0963fe4d77f0673d66bfd03f00a0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 869,
+      "station_id": "record:14261a87ca02cd71c1f43ba6023e29a106f7a69a6868e0fa457eca01a2b13f79",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 870,
+      "station_id": "record:5f82ea729b7345c0f2f44916c132b4341247027ef013dc421f1d5a5fbe2f510d",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 872,
+      "station_id": "record:90aea929d0b91882d37051040ce315fcaac148c0c9fe7200bde443e54faa2716",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 942,
+      "station_id": "record:2e760167fbb04cd7549d11f1bbac9332c8ea2ee4208b7810d31d3f653fa87f5e",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 943,
+      "station_id": "record:d2c92ca2805292a735abf15428431c8c053bafb0d8b3bcc865cabdc98ddd7c2f",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 945,
+      "station_id": "record:07f190428506ad6a5365a2c0ce05f5ceaed14205e062c0e158ed0545aef59a30",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 946,
+      "station_id": "record:8505db41e12bf99600c5a1e029587fa8b784e7cadd78b479cf4fcf8168f00b72",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 949,
+      "station_id": "record:eb5c20c95912e84a400bc1517692241444fd53fd5cb0879e6281160618d29e5c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 962,
+      "station_id": "record:324d146fa11243378b7111889058eaac4eebbcdc14f982ad8a7c8f4750a807ba",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 966,
+      "station_id": "record:324d146fa11243378b7111889058eaac4eebbcdc14f982ad8a7c8f4750a807ba",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1000,
+      "station_id": "record:1471cb766194207bb8b770aea8d321af9697e6a4118977b7e5921a9f87b59bae",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1002,
+      "station_id": "record:acdbf8f51e1839efa065e819e12ae0d0746055cc302da31154960c16230551fb",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1004,
+      "station_id": "record:7d7829c259ec1ddf6fad3e5f4ce562e9cc0deb41ef1c6b4bedccc3f12208f4d8",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1009,
+      "station_id": "record:7694b8f3bd523db66ea50f4e34a6cba9e3eabcffad414a8812b5e6bbf669ebcc",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1010,
+      "station_id": "record:649a20d093b45469a75d1ab7c03b0dc5b3d0deb01b22e0b968f83b1ffac15276",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1019,
+      "station_id": "record:8f259194bb4b377097937fd376a6ee1b76801e0f4e0b1ff1371bd615bc327309",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1020,
+      "station_id": "record:0d54a146a85324d8aa2b0faed8db68a010c4c5ca779cf229b833c35555e3ba95",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1021,
+      "station_id": "record:b7a01e5131dd59aeaeb963991d0dac615eef7e2983702216d2241211e25f359d",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1022,
+      "station_id": "record:afa62a399ecb1bf8af98589a8fedb46fe69607bcefd2ad2e71ce4510cf3a3ec1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1024,
+      "station_id": "record:4eddd96a676ca1018e6f3081efeab11ef2ba2743db214d9d7887c612d00f8fc4",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1026,
+      "station_id": "record:ebcf41dcd7b94cc276b08d915e04f4339c0aad2832e4b47661edf9c1834fa355",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1027,
+      "station_id": "record:33b21984bc9a0e42bf02eb87f8b543227fb8894aa3ea36a4e61ec91492356af7",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1028,
+      "station_id": "record:5e7afe754c7235ae639bbc32d073782246d0876e3e982a563cf5fa55dc33ef0c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1030,
+      "station_id": "record:4d291fc03b52444a873282503d3ae14c362cc55b8b2fd88c3bb5555a9011655b",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1031,
+      "station_id": "record:6776e41429f16b0b6dce25fd243b40fce6f9c6783272ac52a79d579f9a355d83",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1032,
+      "station_id": "record:18fd50e681620ab3f665af49f2f04758f4a75f714290ac6282550bd7c9cca2a9",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1033,
+      "station_id": "record:5972506ba1bbcabe3db33c0c414d21f609e12f7c3afdb1bfc038c73e7fadc4ea",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1034,
+      "station_id": "record:7baec20a297c4e9f2a531b3fcfecfd3786d49a42a0ded2f5efbe1e2aea6368a2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1035,
+      "station_id": "record:4b540625ed2e99aecbf95a1eda4721ccb3490bf5727df9fd0001220bf94e9e60",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1038,
+      "station_id": "record:7d242676dc2e206f320ec3be0a725f2eae84a71cb70c1843d2c953e01724ce55",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1047,
+      "station_id": "record:4ea335f91df4c040dad99bba27860ec7cfa075139ff6b8411ec0462c41988ee3",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1048,
+      "station_id": "record:01303f87ed4c83df4db00f99a1a52e2a25671e273013e603c97095ae58cdea25",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1049,
+      "station_id": "record:a1f9724c06590ef856ce2d6d7a4e30df08a542ed4ea987e303b7b38eb7c8a2c1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1050,
+      "station_id": "record:4cf291d86c0e7ae715b846de2579cabd6c633547881cca087cc622080fe39827",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1051,
+      "station_id": "record:11b858fa9a00afe093d243681b5369b8bbdec48da7261143b9571ef64bc1ad72",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1054,
+      "station_id": "record:b9d95683aeae2dfbbfb11c7a12c59f8ff65e8379de279935e0999901dc4c4253",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1055,
+      "station_id": "record:86d67be9b4e07d55dc19975a40ca3b9b67f237e587598265dfa998053f4e266c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1071,
+      "station_id": "record:295dba3200239ec159fbeb87054667bd478b0a280ea180c0b3b2b9cee985529d",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1087,
+      "station_id": "record:7d5fea6a942f3bcef078d6d4b040c3f2b43f6d85ef027ef034f8923c82e18dce",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1088,
+      "station_id": "record:4e790bd842e0976437517a4969a85c68d3a9c8ed6073a4c1eedc45078faf5147",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1089,
+      "station_id": "record:e90a50c5780ccd69050ec332ca88d52491b78f13c8250531209fc38e69bb7718",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1091,
+      "station_id": "record:20cbf497d8fc0e7d19157d169d67836fdde6ad2676d87ce5c0287e549b7a5f48",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1092,
+      "station_id": "record:ea766b9f5a771f3ee8db7f264029fdd54035ca2d434aeb300a7fdf246c841f8b",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1097,
+      "station_id": "record:a777a9510e4a56728d9b752391a98131d54e08956696acfd7bdf394c80b98503",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1098,
+      "station_id": "record:9cac40127d4be6ac6d8a514bc85d80d2116da93eba9a459f5aff0fc50ac08335",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1099,
+      "station_id": "record:f8bb091baa6c63399069cf8c0ca53c5c8c846553f4c54048ec4e2eee801e16bd",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1100,
+      "station_id": "record:2ee0cd40a73808f60abb8485cf2dafffad0ef307e313f1ef82ed5cc4af54f340",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1101,
+      "station_id": "record:fd6d47286e55f204c1fac08580b44d71291845209866e6005e8962d85d26d0ab",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1102,
+      "station_id": "record:b64885cfabd6e9ff9cfbce675c16fb06a52130e16c8fdd6ae5f66e3191d843fb",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1114,
+      "station_id": "record:90aea929d0b91882d37051040ce315fcaac148c0c9fe7200bde443e54faa2716",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1115,
+      "station_id": "record:5c16253086091c3c268da3546b545d2859b4d1ec9f760d0fb96bc2244eda55be",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1124,
+      "station_id": "record:58e7e1c691408fae0080ef1e3e398c4a20d152a40faf0ffacd4086f4300c7ac2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1129,
+      "station_id": "record:bfa9746b4300f3f008ded3cd921ae09a082b33724e6403848faf39505aa04556",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1130,
+      "station_id": "record:0ccdff332849e5d139d54991b05f26aeae856c5f311068f82f0d5455e121b92e",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1135,
+      "station_id": "record:7a7ef4379b763844c077c54631f614888b5dae56467b511c5bb8e41156925df5",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1137,
+      "station_id": "record:b910d1335c89e21017888b9ed3608da987701bc52a237b1a71c19c82d1c97a93",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1144,
+      "station_id": "record:5a14068b1cdec7df7ed55005d5baea6753faf1d6f16ad0a25126b9b075009b7f",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1145,
+      "station_id": "record:5e197917d3817e25c86ba647d24158d9a736120a930f77b2504cdbf35e29b223",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1149,
+      "station_id": "record:3a16d33501fb021e0044bd64fbedba977bc204ab80835023e3f1e3d975f4ba1e",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1193,
+      "station_id": "record:8b7c94c517f062fd9a166f1ba88b00dfe8a6d6bc7c5388ced1dd4ab43bdc0592",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1196,
+      "station_id": "record:80360c12d26cdb6ff74abfb8fec17bc8a989d0a7253c5b2be513c72cf3552d89",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1197,
+      "station_id": "record:fa01eaf320fcd525d7b269b141c30cd4011bdd7354ea66e57fb44356304d01c1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1199,
+      "station_id": "record:733ad3923dd74834505485626ab54471efdf50a820df09c66b762c1d66de7bb7",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1200,
+      "station_id": "record:83804d5f999d8b4aa12dee42b8fdd0a2fb13bcdc4870d8ac924be250bba85d5f",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1205,
+      "station_id": "record:c250513b896a91547d2572c537c0486d958f0fd9c5d51f1bde1810d2a7847f99",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1206,
+      "station_id": "record:dc062b08eb64a5ce94b60c8d8d3f2119b3932bce522cac6cdd4f919dfb6bdcf7",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1207,
+      "station_id": "record:eb8f31c43d8bc13460dd291b4a6c0d7899381f047c71ade480a2b555dfb2d143",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1209,
+      "station_id": "record:c35dc0efc03014d46ee098a3152b0b22da67029052c3082ccea7c6111909cb4a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1210,
+      "station_id": "record:42cf70da9e8df1ad36c255020a6101f2d86e70df94d791ae20f5c3a03b1a8dc6",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1212,
+      "station_id": "record:6939af3ba349d17a42606c04c76189f3183939da5725d7b29faf7c86480b8878",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1214,
+      "station_id": "record:93271d14521027e9182529466f30244d176ae086fb343e6d42bacde4d5cec231",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1215,
+      "station_id": "record:fb3b3be905221b2a46483d66b249d775144e1f64f4808332fbeb23d857249364",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1216,
+      "station_id": "record:91400824a4391f2b60cf01c339c1a2bb69968f1951507e3ecd6b165bd54fc008",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1217,
+      "station_id": "record:3b629df5ebc485895de76a7f39a038f8cdcded4057c28c0354bec9f1d0c99bd8",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1218,
+      "station_id": "record:8a3fd70f1bdf4d1641893b8f9afe3a842c935e6e34aa79b637008577e22c51de",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1219,
+      "station_id": "record:b6fce211996cd034d20434f599698817b37ea8fad8277dc8523165d38a1ee8c0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1220,
+      "station_id": "record:3466cf3d5491f245860cb8dca4bfb82e8fa58f4611d1e17f60b23b047609fca0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1221,
+      "station_id": "record:af8076004f0c6fea5d60bedd43fd36867cdc4539636b72bd2317057e22f02929",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1223,
+      "station_id": "record:ced17a7ee6e258cf776ec6c8fc7b0f5dcffd30e6380fb0987ee2837c5befbad0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1225,
+      "station_id": "record:84258f2005c69d394f19d897f54defb8c75e523587adc3562ab64bd3e5878580",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1226,
+      "station_id": "record:40ca3289d20f8c2a492808de7bdce15d9316381547348664d8554cfc82c876ea",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1227,
+      "station_id": "record:f705cf9d9532d879caa83ad49aa2d0ca0d074c1303ea62c731b259cc00c7eb49",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1228,
+      "station_id": "record:ea269392598c83973399740182914cb3290c0dbea47acb6bf63ec98664b71588",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1229,
+      "station_id": "record:74180fe573615425e8f95bac2a68f972305da15eb7964a0711a97548838020a0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1230,
+      "station_id": "record:5dc67f9cca86d2c6dd2c6efa174edbafe33f71803aa02fe0ac5625af83a11847",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1231,
+      "station_id": "record:5d91f0080800848c9da035f0b74dc68b82c3edfad41548d900465d5aa509f629",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1233,
+      "station_id": "record:77541aa5248694a4d57874019a35d9cc238fdcf2feaeb80d93febbde8f700f57",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1235,
+      "station_id": "record:e50b60d74d479f10f2f4dce1e7cf276b2051671546adaa0a608e6ca4b3a0f683",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1236,
+      "station_id": "record:3c67a364b9e5b7c6901e71c485b86487a2b19284610eca5ca03507e8435707ae",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1237,
+      "station_id": "record:2fef9d51ddead85f11356653689fcc23da2cc4df5daa55b48d16980bc558a18b",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1239,
+      "station_id": "record:efe3041bff356848a7150c9ec0ce2e4af5f5fe6254445ad834fccf72431da7ef",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1240,
+      "station_id": "record:8ae1330d6f77e52547fb90184f32f7333ab730335cbf0b9d3bf53b295aa37d2a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1242,
+      "station_id": "record:3ac114de67f61ed4b375503e5bee43ff67218a83991bb0dd89c94239bc8bb9e1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1243,
+      "station_id": "record:1003d98d8490259c2bf588fd9eb207a4c77bc5811041803dd04fa578bc4c47ff",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1245,
+      "station_id": "record:d44d9b5ddd22ee8e1bb197ee9a8f9f83810d60ef1da910651e2bfc26ff04918c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1248,
+      "station_id": "record:ddaade3fa07eb5cd6fd37eef59cb334341528d6e165ab4d598e03c72a80d3230",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1249,
+      "station_id": "record:9905c5f2b501a7bebf7fc6acecfb447faed9001acc88450a69ea5504ca5d4654",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1250,
+      "station_id": "record:82c209e81096aba997d0f39ecc4419c6e2cebc8feab7f369c375b53366c7780a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1251,
+      "station_id": "record:355ea076179e9671273eb10a4d069b26e6d9a1b01eb7d2ae696b45b22a396aea",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1252,
+      "station_id": "record:355ea076179e9671273eb10a4d069b26e6d9a1b01eb7d2ae696b45b22a396aea",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1254,
+      "station_id": "record:c521615abc3573e127949cdaafd334a39b17384d5cc842800633e7c418bb2334",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1255,
+      "station_id": "record:283ec1d6e24c083ba5f9ac9e9f9ba3402a04bc0e17427e2a664a0bf2259f313b",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1257,
+      "station_id": "record:a6b12f5308ec0bf644bf5802a44f2f965c246cedd6e4597d6d8fa1e3caa7dfe3",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1259,
+      "station_id": "record:b7410b3176e3abafc119b7998fb96073be8b909d07a1f0a62f323d5f007c3d5a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1260,
+      "station_id": "record:dbe853f33fc59f46d5002b0a908982f57f3c8ff6dd2348cdbcedd2de04ea57e2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1261,
+      "station_id": "record:fefe788983fdb89224a59a2e1f457ab1e13bf786857349b3260a64b2e255bb95",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1262,
+      "station_id": "record:26020bf3763c7c5d71bdc1aabb3f08616744d656ecfbba71a342020f6ad7eaa9",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1263,
+      "station_id": "record:26020bf3763c7c5d71bdc1aabb3f08616744d656ecfbba71a342020f6ad7eaa9",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1264,
+      "station_id": "record:0811a21029fafcc3bb95d82b2f33a6c48386fa2028c43fc4afb454f65c83393a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1265,
+      "station_id": "record:33a5e4c8a0d46ffc11927d62f47d19069fb4ff94f7addeec30a055fdae964c5c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1266,
+      "station_id": "record:e52c96efb936e18bb9d7ceff909ae89314796bf67c28dc605a26bbf1598e2631",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1268,
+      "station_id": "record:6a2a226d4e47837a3bcc254be403a3c8a2653d63a10e5dc467be86a77b4003b1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1272,
+      "station_id": "record:d12d5fdec514fae2e38ce47382c76e0dbec07edb41e8b1f35806a4e699c96d60",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1274,
+      "station_id": "record:e49823986c84c84b2fc6f8cce32f7890ef303164a647665f0b8dd03d2720036e",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1275,
+      "station_id": "record:9de609dddae2a7a81c4bdbf3951ce756955daa5859a1a066a7858f1dfb58b9a2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1277,
+      "station_id": "record:b78563d6127069751a994282a4bfe3b85b41e1095754135245a0715e537a3d49",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1278,
+      "station_id": "record:1df6ad1499a48c40ad7847010baf5cb515bf321fc2af9792e8fbb4ac8583c9f5",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1279,
+      "station_id": "record:46546635577a0a6c7d95b12d3df2ab868af3a0cd3a0e683d39aacd38d3f24337",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1280,
+      "station_id": "record:5ebcfa79f14aea26b0b5d22095bd0441b543436c5d04e775317efe00529b68a0",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1281,
+      "station_id": "record:1099ab37e261612a6fc3f9e420da20a9a61cc80f7a5d14bde4366ecb0cab0b37",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1283,
+      "station_id": "record:a1c4eb2b3c64f501bda756abde59fedb6f0e96505e89bb24dc57fd3501ff4502",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1284,
+      "station_id": "record:2b0189814703f7a5e0a4f67a50b4f66880826b85f33554b805432a522e662181",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1308,
+      "station_id": "record:1fab99ffd487f686d8d6efaadd4bcee4a552dcb32f247bc2fea2a30d1147fde1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1309,
+      "station_id": "record:960b2b250f5d261bcb4e87cc6756ab9bc763284b9a50559f2510832e2246f58b",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1311,
+      "station_id": "record:2a1a683770d9b3682eb7b687828e2f870414f87c79d1f858884e4967fa15b458",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1312,
+      "station_id": "record:ad1b5db790e5e1951baa0e588af25d0389cce5c9b7d0b06eb043820cdda47ca3",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1313,
+      "station_id": "record:59ca806f736079caf6c13fb319d409d9d3d1eb2bab8df3eb7cace4c518dcfc07",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1314,
+      "station_id": "record:ccaad1f2b2718a145158059b8ac3ece9caf636d8510c6312dc9fb6a7d3ba9a36",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1315,
+      "station_id": "record:963031f611be9a250eeb1f6d1aed562df6404dae2567001a2f9a60e9fb8cc7f4",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1316,
+      "station_id": "record:c60b13b2e8f915b24eed85c81edff5c2015429cd606cc78d79c12dfe632de1f8",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1317,
+      "station_id": "record:f6aa1a3afc6a6fe0c7588c2170df82f9a57df98f35d194b2831cc41346db1a09",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1318,
+      "station_id": "record:32e92193df4995d6462c52d252ad1b240d6c1616b262c96226e78ad8d9bc8fdb",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1319,
+      "station_id": "record:d5769c8d188d903bee3177730163d5a6c450b6ad5cf05f98fe7a6efbc900f794",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1325,
+      "station_id": "record:1b9aa47624067ce9b031646141104c9640719ad67a69d0137fb0c33ffef4167a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1327,
+      "station_id": "record:bc755d7744b1f385e52e46d3c2a3038e6ce3d139ee69f4ae11ba0e265afb81a7",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1328,
+      "station_id": "record:e5677546af35c74659b1af8b61d0a858d2c5cebe996e042fb24441b74d1d83dd",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1329,
+      "station_id": "record:68e529bc307775ba8070b53ba8f1a4ea31439265a8b8cbd3e4799844084cbb68",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1330,
+      "station_id": "record:220227ed0ab47eb4a76481705eab9e2bf864b30557d547eba8eff42671702300",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1331,
+      "station_id": "record:73ba977cad938620dffda7a4870cc7f8c3b6eaca3fc18db37d727a507e1c3859",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1332,
+      "station_id": "record:dd5602470c9ce200d7dbaa9049f54dcd4aeb5a515d47bb30d04dcc4446e749e3",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1334,
+      "station_id": "record:dd0d104a7f00863616bb55bff827ef87c21cfda14c2be191806b4d58e550d7f8",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1335,
+      "station_id": "record:afbbcbea9d38496689eeb71e4df2e29664fd9793f2f0199f4a4edf7e1385c945",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1336,
+      "station_id": "record:0d77bf37c329be356b4c6c6be403bb767a538f5470a691613d4e946094888da1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1338,
+      "station_id": "record:c4d58ba6a32003a934fc092654f111080a3c07849716437bad00b8e80541ba1e",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1340,
+      "station_id": "record:e3d5570ae2fb88ace03bf02a29499245fe479bdb30758f1c50143b00d58e4232",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1344,
+      "station_id": "record:167a22f27cfee4343de5b181a84429d49b24f9456f67abeb414730fbe81b3ab7",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1345,
+      "station_id": "record:cfe82e8147e82483b3fba846d79fb08aff594509931f06719017d08b6d119e7a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1346,
+      "station_id": "record:197a78fcc71aef198ce3f36dc1c41fd7e4932d015f506385a210674ea5ea48b9",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1347,
+      "station_id": "record:2dc512f34729657fa194dd5ebbf7474fd1ef3e681e7413ac01869781984584e4",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1349,
+      "station_id": "record:14261a87ca02cd71c1f43ba6023e29a106f7a69a6868e0fa457eca01a2b13f79",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1350,
+      "station_id": "record:5f82ea729b7345c0f2f44916c132b4341247027ef013dc421f1d5a5fbe2f510d",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1351,
+      "station_id": "record:b3aefc93b39faca8890db8da28930a393fd5f81fc4f3288f708b35476dd8f8d9",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1352,
+      "station_id": "record:5ba0ae11214d1d012482f9d2e833cf4bee664222f73ece05176332bd53794ce2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1353,
+      "station_id": "record:3e04a944c6a4bf4f198d82210a54c3432c96c63b52df11a41096f7e412738670",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1354,
+      "station_id": "record:6d039c9a91723f1549eaf1ae3993579fad87f869a05bd18ca08e5ee83d857b22",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1355,
+      "station_id": "record:ae166e8c697476eae45eda6e532d7c0c6b65273c3e9d3d56e8deaa21d2fa8694",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1356,
+      "station_id": "record:deeeae968876230b3c13b162f76fc0ff47f130a0457d8df17ae54c1f81a417e8",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1369,
+      "station_id": "record:68f607e626697be276b20f55fd13d2c035ae2683543e9ffc71855aedd3d700f8",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1370,
+      "station_id": "record:c8ad7c94020e4951c3efe85771b12a8615d7820849c42b9f09b2b1c2e57cb899",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1371,
+      "station_id": "record:7812626748a7fbd5fd73a11d3902677c7a9513e7c1d858805399620874fcd07c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1372,
+      "station_id": "record:871163e0976fbfb7ce21811eaffebb40df7d7322296483bd58b9494104eeb663",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1373,
+      "station_id": "record:60c8a92cdda6ac603b41e80b901a122ea427bcd766281ef4403fd7afe8cd75c3",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1374,
+      "station_id": "record:aa2cae4b3288df53c1e665fe01e54964b8b9dbc2fb8a72e73ea248159110eaa6",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1375,
+      "station_id": "record:3cb333037c0bdf85891e70ee98ee2de169718320e4ee396c74f68e575eec2c81",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1376,
+      "station_id": "record:1a7872b3a992d059b00a9daedab6adfff0a4c04999147bba3075a8b65137cf80",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1377,
+      "station_id": "record:c253805c4cbdc07f7534d148d5892055685ef670be776118c41541c1f2e62b71",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1378,
+      "station_id": "record:c29576a03cf171e5a75a93cf869113c3d6a59dcac5f554a2e188fb6c056ae474",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1379,
+      "station_id": "record:9942a978ddcece17564163f276a819dd0f49a597bfdbb1470f443d203279c61c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1381,
+      "station_id": "record:703974f02626ddbab482d701bcfd51ab2c76beda8e4ecf7fb023638c2a0ec4db",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1382,
+      "station_id": "record:feeb305751b91481a99382c973b4adde1763e3f2f66e771d72b6bfbb75ecabe4",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1383,
+      "station_id": "record:fce48ffb088700fe71dc00321cb3aa691e4d3d55cc6f6eb9a20578f067765184",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1385,
+      "station_id": "record:38f7773c552792a6b0a22a195f2fe3b348850929905c7e69ea96a2c3ee34ad87",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1393,
+      "station_id": "record:e10ebaab638b057b900d126a08c7b229e830df68d9cae92961e5e66fc0e6ba5c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1394,
+      "station_id": "record:e7da8ebc4ce8ab73492a27d3b128308fa65a7365876e22f4455e719c1485338c",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1395,
+      "station_id": "record:d6e59bdbfa66aeb90aa44d0b7ffef7444f747a5f2f75e96ffb72e1c068ac93af",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1396,
+      "station_id": "record:9a0de49d6308bc07b9c2a9d1cc8e2e0c551350862aeb1ab8a7820f50b2f57406",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1397,
+      "station_id": "record:8cd8da01cb404c81c5b11922b2f0b5e713fe019b81c0b7e1bd6a9b562249ace6",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1398,
+      "station_id": "record:59b6231fca6a418250d020c65dda38134b482642f12534c1af984c1d4cf4addd",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1404,
+      "station_id": "record:ec12018ee7a06fbc75c5fd51e931b74ffbad5421a686203ed824163918e79505",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1412,
+      "station_id": "record:b69f4ca3dc33f48099ffe4ae01cfeb6cbea04f511bc7a6f33598522cfb0a2617",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1413,
+      "station_id": "record:2e63ba3791c4beb8a6333c6f67a7bba5307f493e09a215562141b7aa8aa6edd1",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1414,
+      "station_id": "record:d4359bd85c0db0211884b9e6c8b9480ea9b604d7e4cab0f7b3a58fa8e850660a",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1415,
+      "station_id": "record:a162abe1a36cd9c554c68a107b2d266bbd1c531e727f0c2b2fea15d4e09789a6",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1416,
+      "station_id": "record:fc6c7b33785caf2258001322357d38d4038e6f92386040b0d7d46d9b4be7d1cb",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1417,
+      "station_id": "record:ecaacc95d7ab40e69399edb872f1280f4806e23aa904c712ea6206f8cc6540d2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1425,
+      "station_id": "record:dbad0dc67d8074ef7416e7d3178489f5640c3b120c7e7a7ea2a65222395e2936",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1431,
+      "station_id": "record:e9844ab34ec3cb8ec17f54b825d9ba9773e09452e248fb43d0af7378c198abc2",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1438,
+      "station_id": "record:6a16d29757ac2276af04c59bcc088be9b27da396aafcad5584e1ee90003a5be5",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1439,
+      "station_id": "record:1b56d17633b5ad40af8651937451949a529f8d210a9166560e95f8a861bd56ea",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1440,
+      "station_id": "record:1b4e1081db6473fdeabe50fe25cf614b0c63fca01c1c672ba328c443832a7d05",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1441,
+      "station_id": "record:9677ca16aa2060f5d431840875f0bf45ebe130ebf2904b38cdd33fd979185160",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1442,
+      "station_id": "record:5a14c5bb6acec0427062ad0f0870c339a18df3688e43de8ca08a64cbcefe5fd4",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1444,
+      "station_id": "record:ed918d2299334f840951b91ce281a2f8066d4fd9884c1f9b7b5527e63e113862",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1445,
+      "station_id": "record:7d78a0361f5476c24f6e5e109cacf7bac7c72266f9c858639901122c3bcf5b8b",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1456,
+      "station_id": "record:6e6ce7dcf9cefe7edca3a7f2b8fd5d8b5022ea659c3125981b31573a004f3c21",
+      "reason": "Duplicate source row; first valid record retained"
+    },
+    {
+      "row": 1459,
+      "station_id": "record:6e6ce7dcf9cefe7edca3a7f2b8fd5d8b5022ea659c3125981b31573a004f3c21",
+      "reason": "Duplicate source row; first valid record retained"
+    }
+  ],
+  "warnings": [],
+  "capabilities": {
+    "station_id": true,
+    "station_name": true,
+    "latitude": true,
+    "longitude": true,
+    "city": true,
+    "state": true,
+    "country": false,
+    "operator": false,
+    "status": false,
+    "availability": false,
+    "connector_type": false,
+    "num_chargers": false,
+    "charging_power_kw": false,
+    "address": true,
+    "source_type": true
+  },
+  "availability_index": false,
+  "coordinate_validation": "Numeric range and India bounding envelope only; not a boundary polygon or ground verification.",
+  "limitations": "Source observations are not live occupancy, reliability, demand or ground-verified locations.",
+  "snapshot_id": "2ee144cf5153486e90e9cd0ba969a857",
+  "source_capabilities": {
+    "station_id": true,
+    "station_name": true,
+    "latitude": true,
+    "longitude": true,
+    "city": true,
+    "state": true,
+    "country": false,
+    "operator": false,
+    "status": false,
+    "availability": false,
+    "connector_type": false,
+    "num_chargers": false,
+    "charging_power_kw": false,
+    "address": true,
+    "source_type": true
+  },
+  "regional_scope": [
+    "Uttar Pradesh",
+    "Delhi",
+    "Rajasthan",
+    "Haryana",
+    "Punjab",
+    "Madhya Pradesh"
+  ],
+  "regional_records": 282,
+  "regional_counts": {
+    "Uttar Pradesh": 65,
+    "Delhi": 102,
+    "Rajasthan": 42,
+    "Haryana": 49,
+    "Punjab": 16,
+    "Madhya Pradesh": 8
+  },
+  "outside_scope_records": 1049,
+  "state_label_matches": 350,
+  "geographic_conflicts_excluded": 68,
+  "geographic_conflicts": [
+    {
+      "station_id": "record:4f348ca5b839093c3306fb972a3d89fed76cf6d23ce5f7c4f45c0ff4cb8bfddf",
+      "source_row": 64,
+      "station_name": "Hotel Reddison Square Katra AC Charging Station",
+      "source_state": "Delhi",
+      "latitude": 32.9867,
+      "longitude": 74.9238
+    },
+    {
+      "station_id": "record:35575da44fa83eea8639b4366ac774fa30c6f8a08419cd66757fa78931d6afaf",
+      "source_row": 65,
+      "station_name": "Hotel Mount View International AC Charging Station",
+      "source_state": "Delhi",
+      "latitude": 32.9918,
+      "longitude": 74.9306
+    },
+    {
+      "station_id": "record:4a7d8d9fa0ecc582123b719c93df0938633683330eb25d0408b119299490bae4",
+      "source_row": 66,
+      "station_name": "Hotel Dolphin AC Charging Station",
+      "source_state": "Delhi",
+      "latitude": 32.9892,
+      "longitude": 74.9289
+    },
+    {
+      "station_id": "record:9211260b875a98a2f31d3ee8bc50e299334a16386b10541fb9b09b9a6e7399bc",
+      "source_row": 136,
+      "station_name": "Infinitea",
+      "source_state": "Punjab",
+      "latitude": 12.9689998626709,
+      "longitude": 77.6361999511719
+    },
+    {
+      "station_id": "record:2cf634380d3638f8b872fdd509c1d90142ab6e37c5b959f9e9a8307a24e14f97",
+      "source_row": 137,
+      "station_name": "The Only Place",
+      "source_state": "Punjab",
+      "latitude": 12.9730997085571,
+      "longitude": 77.6033020019531
+    },
+    {
+      "station_id": "record:2fdc027966c5762a4e0da940d35481a43d7a2551cd1e126e378642829c05d544",
+      "source_row": 138,
+      "station_name": "Fab Cafe",
+      "source_state": "Rajasthan",
+      "latitude": 12.934100151062,
+      "longitude": 77.5171966552734
+    },
+    {
+      "station_id": "record:2b8577053a2c10b50ac1eaa597de1c0b5505d54dd85557c9f6177e365ba1f1fc",
+      "source_row": 139,
+      "station_name": "The Moonshine Project restaurant Jubilee Hills",
+      "source_state": "Rajasthan",
+      "latitude": 17.4141998291016,
+      "longitude": 78.4076995849609
+    },
+    {
+      "station_id": "record:b5776bf1adcee274cfbaf4847ebd5990b68863113c2b4e5299b4ad45d48d0b66",
+      "source_row": 152,
+      "station_name": "Sarath City Capital Mall",
+      "source_state": "Harayana",
+      "latitude": 17.456842,
+      "longitude": 78.364575
+    },
+    {
+      "station_id": "record:08e91bd959985dc58a49425525d8038aeeb381b637ed4856c601f4984577bbda",
+      "source_row": 156,
+      "station_name": "Almond House SD Road",
+      "source_state": "Delhi",
+      "latitude": 17.441011,
+      "longitude": 78.503158
+    },
+    {
+      "station_id": "record:cbecd52df7c145462555bf8fb4c2898a62149e9f2a2b476bf5029dc13ca36b43",
+      "source_row": 158,
+      "station_name": "Swiss Castle, Vidyanagar",
+      "source_state": "Punjab",
+      "latitude": 17.400595,
+      "longitude": 78.508078
+    },
+    {
+      "station_id": "record:cfa688d9a9bb4497dc9944d9d65ba1813e039b42d7ed9e3173811139afa0992a",
+      "source_row": 159,
+      "station_name": "Bliss Bakery & Cafe",
+      "source_state": "Delhi",
+      "latitude": 18.4788385,
+      "longitude": 73.9013856
+    },
+    {
+      "station_id": "record:518f00a45815ef3d528bec7ee8d8bcc275bf9da90c86668d5cee4ac76949ee88",
+      "source_row": 160,
+      "station_name": "Flip Side",
+      "source_state": "Delhi",
+      "latitude": 17.4139784,
+      "longitude": 78.3275492
+    },
+    {
+      "station_id": "record:76cfd0fe5533164f99ba506defcd87322ec861b637280d3078a4ec0a690e8e83",
+      "source_row": 173,
+      "station_name": "M's Street",
+      "source_state": "Delhi",
+      "latitude": 12.9149592,
+      "longitude": 80.1920666
+    },
+    {
+      "station_id": "record:4933ad09a00121061adaee8235d1edff186eea0f33a618b21b8a22df6a4534b2",
+      "source_row": 189,
+      "station_name": "Kumaran Silks, T Nagar",
+      "source_state": "Rajasthan",
+      "latitude": 13.0406526,
+      "longitude": 80.232646
+    },
+    {
+      "station_id": "record:bc0f79eb77c58d96bcd695c13ea37cd2042baa9d4291e678ed4ee724bd1eda8a",
+      "source_row": 194,
+      "station_name": "1944 The Hocco Kitchen, Vaishnodevi",
+      "source_state": "Uttar Pradesh",
+      "latitude": 23.1347369,
+      "longitude": 72.541765
+    },
+    {
+      "station_id": "record:401956df9870d88b40f24d94d7e40f65f4716ffa9ef58062da2bbed8f9a268ca",
+      "source_row": 201,
+      "station_name": "Lumber Jack",
+      "source_state": "Haryana",
+      "latitude": 18.4931152837874,
+      "longitude": 73.8154865931648
+    },
+    {
+      "station_id": "record:5246982588c4d2771b8d09d1db0d9262b20a392bd4987fd4f254e483b20369c9",
+      "source_row": 202,
+      "station_name": "AtherSpace Pune",
+      "source_state": "Haryana",
+      "latitude": 18.5186726,
+      "longitude": 73.8302965
+    },
+    {
+      "station_id": "record:a0282eb6dfe5204a8bf22425374963437532bb96c857efa37b83bfa4b8ac46f4",
+      "source_row": 204,
+      "station_name": "MCGM Parking || Club Aquaria",
+      "source_state": "Uttar Pradesh",
+      "latitude": 19.2402364,
+      "longitude": 72.8481819
+    },
+    {
+      "station_id": "record:474e0a4017a6c77e57c10a959abbb7bcfe5aeee10a3429049d52a5ffd0af7215",
+      "source_row": 206,
+      "station_name": "GM Cycle Parking Stand (Opp to sevai maiyyam)",
+      "source_state": "Rajasthan",
+      "latitude": 13.117155,
+      "longitude": 80.09997
+    },
+    {
+      "station_id": "record:eef6f0e550574ea166d837f96f951e1a560581894cdd24e92c6844b7aee05175",
+      "source_row": 216,
+      "station_name": "Ather Space Ahmedabad",
+      "source_state": "Delhi",
+      "latitude": 23.0281973,
+      "longitude": 72.5432892
+    },
+    {
+      "station_id": "record:48f12b078f6e8dcc45647fc7791ff12cce069d68e97d05e9d55e26fc2a05199d",
+      "source_row": 217,
+      "station_name": "Cake Bee, Cantonment",
+      "source_state": "Madhya Pradesh",
+      "latitude": 10.8024024,
+      "longitude": 78.6824181
+    },
+    {
+      "station_id": "record:806dc6d3b0ef4684e6d79725c13d795e9343d0678ad4c3b70b3d05f477fe9a1f",
+      "source_row": 227,
+      "station_name": "Ather Space, Kochi",
+      "source_state": "Delhi",
+      "latitude": 9.98014,
+      "longitude": 76.3173646
+    },
+    {
+      "station_id": "record:98492eb848bb314fdf708ac2423ca18a3a3885a26dc33dbe0215a2ecb6bf035c",
+      "source_row": 237,
+      "station_name": "Cue Campus",
+      "source_state": "Madhya Pradesh",
+      "latitude": 15.360651,
+      "longitude": 75.126774
+    },
+    {
+      "station_id": "record:5d37d67215302c4f627ba202b10e2d7191483d26e0e546a9d6642ce7a08e92d1",
+      "source_row": 253,
+      "station_name": "WeFix Automobile",
+      "source_state": "Delhi",
+      "latitude": 18.648377246379,
+      "longitude": 73.8298662608401
+    },
+    {
+      "station_id": "record:1889520dd82fbbffc0a1c420ec3f0568422a2f3d61346af502017df0c3825dbd",
+      "source_row": 254,
+      "station_name": "The Vizag Drive In",
+      "source_state": "Delhi",
+      "latitude": 17.7314545,
+      "longitude": 83.3405749
+    },
+    {
+      "station_id": "record:4d069a444ff5c4e6acb713e77e675e8fce14cb7db40826e03ba07cb924502905",
+      "source_row": 258,
+      "station_name": "Host The Hospitality Store (Breadworld, Thykoodam)",
+      "source_state": "Haryana",
+      "latitude": 9.96185111999512,
+      "longitude": 76.31884765625
+    },
+    {
+      "station_id": "record:965dff720e27a7ea991310e33e06d00a7278826cc484b8bff3e0afb5b87a6000",
+      "source_row": 259,
+      "station_name": "Breadworld, Mavelipuram",
+      "source_state": "Haryana",
+      "latitude": 10.0231762,
+      "longitude": 76.3411644
+    },
+    {
+      "station_id": "record:b5352239f2f6d95905ad07c506467fc13cdab6080d6046d2837e530cc0efd00c",
+      "source_row": 260,
+      "station_name": "Breadworld, Petta",
+      "source_state": "Haryana",
+      "latitude": 9.9449301,
+      "longitude": 76.3354211
+    },
+    {
+      "station_id": "record:d3a0d1af157aa3c045915961006a598097c74bcf4df1a3de5ef5c22fee299bdf",
+      "source_row": 261,
+      "station_name": "Ather Space, Kozhikode",
+      "source_state": "Haryana",
+      "latitude": 11.264453,
+      "longitude": 75.7773662
+    },
+    {
+      "station_id": "record:319d8f28499d35e4ca294eacf0e60a99d2e3eb3829e00606f826625b1d394d57",
+      "source_row": 270,
+      "station_name": "DISHKO Eatery",
+      "source_state": "Uttar Pradesh",
+      "latitude": 8.4997772,
+      "longitude": 76.9542647
+    },
+    {
+      "station_id": "record:5ec6b0fd661501bb05e45c849418df7cd1fd84e4e1924161bd9972e6e7e7f757",
+      "source_row": 271,
+      "station_name": "Charminar Chowrasta Cafe",
+      "source_state": "Madhya Pradesh",
+      "latitude": 17.8000838,
+      "longitude": 83.3473927
+    },
+    {
+      "station_id": "record:862d7f8feb3260a3f83a15eab30a753cb6de674727c510de6eb8cf0b0784cc13",
+      "source_row": 287,
+      "station_name": "Old Goa Residency- Blive",
+      "source_state": "Rajasthan",
+      "latitude": 15.5000488654027,
+      "longitude": 73.9141273127392
+    },
+    {
+      "station_id": "record:931977ea6064f2190eb4e33bb1ac970d44da08d2d2b96eb994cc4310cc874cb3",
+      "source_row": 288,
+      "station_name": "Eham Digital",
+      "source_state": "Rajasthan",
+      "latitude": 11.2648469,
+      "longitude": 75.8109713
+    },
+    {
+      "station_id": "record:5c79426b717c8f9786d26aa7041ba34f5f0c4fd1d7cd8c88b40327d576974dfe",
+      "source_row": 290,
+      "station_name": "Mall of Mysore",
+      "source_state": "Uttar Pradesh",
+      "latitude": 12.298036,
+      "longitude": 76.663958
+    },
+    {
+      "station_id": "record:a8fc6b553d628826c96b935e9aa1800bca01a8bdf654ee89fe02d9315039fc51",
+      "source_row": 318,
+      "station_name": "AtherSpace Mysore",
+      "source_state": "Delhi",
+      "latitude": 12.325053,
+      "longitude": 76.611337
+    },
+    {
+      "station_id": "record:944ee5fe874f252bb998dc41eed56e210bad00185e47c51cbfe5f59465ce6735",
+      "source_row": 319,
+      "station_name": "Bamboo & Biryani",
+      "source_state": "Uttar Pradesh",
+      "latitude": 16.5009139,
+      "longitude": 80.6472927
+    },
+    {
+      "station_id": "record:9769e2a4103cafda1bb997b5c711e64802f5fbe20e2b6c567631ac43d7ac913c",
+      "source_row": 320,
+      "station_name": "Lodha Venezia CPL",
+      "source_state": "Haryana",
+      "latitude": 18.9917205,
+      "longitude": 72.841513
+    },
+    {
+      "station_id": "record:ce3bbc4199cf1be2f2a3e4790520f824f9487c7966c292bd7f105ad0e84eda14",
+      "source_row": 321,
+      "station_name": "Cafe Peter",
+      "source_state": "Delhi",
+      "latitude": 18.5105106,
+      "longitude": 73.7819022
+    },
+    {
+      "station_id": "record:ac27906e8185d3d22d9c57477a7088749c09fcc78e206aa16da35ae425ac792f",
+      "source_row": 331,
+      "station_name": "Ather Space Raipur",
+      "source_state": "Uttar Pradesh",
+      "latitude": 21.243932,
+      "longitude": 81.6347283
+    },
+    {
+      "station_id": "record:bab14643223469b1f9f778cf374b436ecb769ac716c239ed304dccda3bee9529",
+      "source_row": 338,
+      "station_name": "Ranthal Gardens Restaurant",
+      "source_state": "Uttar Pradesh",
+      "latitude": 8.45477423944579,
+      "longitude": 77.0024490353778
+    },
+    {
+      "station_id": "record:2f89d59423af4127747421152e6fb1a24b5e5f275bd2de8997b9c8f4bb1ab46a",
+      "source_row": 339,
+      "station_name": "Kalikkalam Sports",
+      "source_state": "Uttar Pradesh",
+      "latitude": 8.53396462982223,
+      "longitude": 76.8807341186971
+    },
+    {
+      "station_id": "record:dc312e9c172307206c35058b78aa99b97694765852a68966085b08a560a51a86",
+      "source_row": 347,
+      "station_name": "Ather Space Siliguri",
+      "source_state": "Delhi",
+      "latitude": 26.7321074,
+      "longitude": 88.4322712
+    },
+    {
+      "station_id": "record:36c865523243364769cba8130c20d4d80f789b2708cbd1d750855369e8abb7df",
+      "source_row": 350,
+      "station_name": "Patanjali Store Wardhaman Nagar",
+      "source_state": "Rajasthan",
+      "latitude": 21.148294,
+      "longitude": 79.128434
+    },
+    {
+      "station_id": "record:417c649dbff1eed90bb9344ee1feff7dc3dca8ed3135f927732939c79180a387",
+      "source_row": 354,
+      "station_name": "Vasant oasis",
+      "source_state": "Uttar Pradesh",
+      "latitude": 19.1146146,
+      "longitude": 72.8840941
+    },
+    {
+      "station_id": "record:a20ccad03195ca7cdc0babf0053486fada47bc4e0a33af85629b836f240d74ca",
+      "source_row": 355,
+      "station_name": "NMR Enclave",
+      "source_state": "Uttar Pradesh",
+      "latitude": 12.942047,
+      "longitude": 77.631059
+    },
+    {
+      "station_id": "record:c3c917c15f232ed69ccc7d5482aa6d8a716d2ff3a7f25095b1596aded54c3afb",
+      "source_row": 364,
+      "station_name": "AtherSpace Nagpur",
+      "source_state": "Punjab",
+      "latitude": 21.1393999805338,
+      "longitude": 79.0604764831562
+    },
+    {
+      "station_id": "record:221909052da38fd08801c3196464eca036917ebde6d4644e33b8f66acd04b070",
+      "source_row": 365,
+      "station_name": "Xavier Institute of Engineering",
+      "source_state": "Rajasthan",
+      "latitude": 19.0452082935871,
+      "longitude": 72.8415417466136
+    },
+    {
+      "station_id": "record:a1a34e094e7a5e954c8c159ec17454dfd2ea38d44e5f5b431bc408fe4c51c1b6",
+      "source_row": 368,
+      "station_name": "Adyar Ananda Bhavan, Navakari | Zeon",
+      "source_state": "Madhya Pradesh",
+      "latitude": 10.8556755,
+      "longitude": 76.862332
+    },
+    {
+      "station_id": "record:7fa04067a2f241b073d54f17bec151a9af7b4a48ef99dd758159864f9b5ccce6",
+      "source_row": 377,
+      "station_name": "R R Sales",
+      "source_state": "Madhya Pradesh",
+      "latitude": 26.1763362,
+      "longitude": 91.7404708
+    },
+    {
+      "station_id": "record:2a9a4543fe73043a2397a1ed3c0f35e83b6543ba03e272144564ddf2f0705f5c",
+      "source_row": 378,
+      "station_name": "Vishnu Tradex, Shreekunj Elegance",
+      "source_state": "Delhi",
+      "latitude": 23.0735526,
+      "longitude": 72.520875
+    },
+    {
+      "station_id": "record:41bd798b89a293046c245b9807f74ea474e2a742be29a92ee8ce07e66cd8da55",
+      "source_row": 380,
+      "station_name": "Royal Global University",
+      "source_state": "Delhi",
+      "latitude": 26.112203,
+      "longitude": 91.7241576
+    },
+    {
+      "station_id": "record:d0133bf7d501f41d3fdabd61d312455dc1ef458b2e1dd02338b37d5f9fba2bd7",
+      "source_row": 382,
+      "station_name": "Ather Space, Guwahati",
+      "source_state": "Punjab",
+      "latitude": 26.172606,
+      "longitude": 91.7293442
+    },
+    {
+      "station_id": "record:33a947171836d88d22238e37f31d89585e928d760c9ed4dccf7d28159f6c602f",
+      "source_row": 383,
+      "station_name": "Guy Car  Steamer",
+      "source_state": "Rajasthan",
+      "latitude": 12.904089,
+      "longitude": 77.662251
+    },
+    {
+      "station_id": "record:6d4079fb8bddcf11f0cd96fef0e696dd224ba3d084b513c93198878c211c59a0",
+      "source_row": 384,
+      "station_name": "AtherSpace Belgaum",
+      "source_state": "Rajasthan",
+      "latitude": 15.868772,
+      "longitude": 74.487863
+    },
+    {
+      "station_id": "record:e9ab2c6742022ce6484e33ff43b88c2e048970e5351b54e63dea8cc15516c1bc",
+      "source_row": 385,
+      "station_name": "Ather Service Centre",
+      "source_state": "Rajasthan",
+      "latitude": 26.170766,
+      "longitude": 91.7608176
+    },
+    {
+      "station_id": "record:9f5f6e1c82d2ad9da73ad01c2b8f17bd8f45e8e0871a803506f639decfdba107",
+      "source_row": 386,
+      "station_name": "Ather Space Vijayawada",
+      "source_state": "Delhi",
+      "latitude": 16.5007264,
+      "longitude": 80.6574292
+    },
+    {
+      "station_id": "record:fb5ea44bed62164bae4d174a34bcfca11cfa92c3362aedf814c9bb1685dce7f9",
+      "source_row": 405,
+      "station_name": "Radisson Bengaluru City Center",
+      "source_state": "Delhi",
+      "latitude": 12.976339,
+      "longitude": 77.619717
+    },
+    {
+      "station_id": "record:1124a30223c9a0f6f9684047d1b4d363aacb0e6363313cb435b183f4088ad1d2",
+      "source_row": 408,
+      "station_name": "Hotel Om Navratna",
+      "source_state": "Delhi",
+      "latitude": 18.9014249045997,
+      "longitude": 73.2365788533079
+    },
+    {
+      "station_id": "record:7e309dd2b8d329f854370ea945959989202ff77ac6f5979bb1d7565e046d7615",
+      "source_row": 409,
+      "station_name": "Ather Space Mangalore",
+      "source_state": "Punjab",
+      "latitude": 12.8785935,
+      "longitude": 74.8513216
+    },
+    {
+      "station_id": "record:7f6de6e781fd28935388a09f415851ee95860761297af2cf50a2d3b17d5025d3",
+      "source_row": 410,
+      "station_name": "Ather Space Kannur",
+      "source_state": "Punjab",
+      "latitude": 11.874322,
+      "longitude": 75.3872
+    },
+    {
+      "station_id": "record:d9840fcba76b97c98542d89cef1177b04e7ed1bb6f21353c4c5c93c5f24e5082",
+      "source_row": 418,
+      "station_name": "Hotel Kuppana",
+      "source_state": "Delhi",
+      "latitude": 13.648073,
+      "longitude": 79.446494
+    },
+    {
+      "station_id": "record:57e8aad005d515e8634f0fba976710a91ba8e625caea92b3ad4522e2f5e8750c",
+      "source_row": 419,
+      "station_name": "Guru Sweets & Snacks",
+      "source_state": "Punjab",
+      "latitude": 26.7618706,
+      "longitude": 88.3388182
+    },
+    {
+      "station_id": "record:d460b984c3cf90236b044e6ddd42418aa8e19eaec0e336601e86cc764e4c2422",
+      "source_row": 425,
+      "station_name": "Ather Space Thane",
+      "source_state": "Rajasthan",
+      "latitude": 19.1981177009338,
+      "longitude": 72.9674150562047
+    },
+    {
+      "station_id": "record:8956e51480dfac24fa24849748a317c1a13d7d24c2b09194162e963b393a93be",
+      "source_row": 426,
+      "station_name": "Irani Chai",
+      "source_state": "Delhi",
+      "latitude": 12.91371,
+      "longitude": 77.644164
+    },
+    {
+      "station_id": "record:88555f8893f56285a631f2b3c83dab7cc786d89193fe52eab558dd8de85dc87e",
+      "source_row": 462,
+      "station_name": "Hotel Grand Leela Krishna, Bhimavaram",
+      "source_state": "Madhya Pradesh",
+      "latitude": 16.5451748,
+      "longitude": 81.5199403
+    },
+    {
+      "station_id": "record:84258f2005c69d394f19d897f54defb8c75e523587adc3562ab64bd3e5878580",
+      "source_row": 496,
+      "station_name": "IOCL COCO u00e2u0080u0093 Central Jail RO, Rambagh",
+      "source_state": "Madhya Pradesh",
+      "latitude": 22.335789,
+      "longitude": 73.173794
+    },
+    {
+      "station_id": "record:9bb75f346ce36586175bf6afe187b5592f61c45c012fa548670fb9793c8c8619",
+      "source_row": 609,
+      "station_name": "Mr. Lalit Jenau00e2u0080u0098s Site, Panikoili",
+      "source_state": "Rajasthan",
+      "latitude": 20.9238315,
+      "longitude": 86.2494284
+    },
+    {
+      "station_id": "record:e98b075fcb3f4fb9b5d0df8ee853f80c00f19899c189d1459088ba5ff75a01e0",
+      "source_row": 1411,
+      "station_name": "Sara Automobile, Dobhi",
+      "source_state": "Uttar Pradesh",
+      "latitude": 24.525355,
+      "longitude": 84.932182
+    }
+  ],
+  "scope_coordinate_check": "Source state label plus location within the six-state Natural Earth cartographic region or 5 km of its border. Not official boundary validation; source coordinates and states are never repaired or inferred."
+}

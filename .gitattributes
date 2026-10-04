@@ -1,0 +1,7 @@
+# Preserve supplied source extracts byte-for-byte; they are audited by SHA-256.
+data/raw/* -text
+
+# Screenshots and local map/font assets are binary artifacts.
+docs/screenshots/* -text
+frontend/public/*.woff -text
+frontend/public/*.woff2 -text

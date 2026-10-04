@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+data/local/
+*.log
+.env
+.DS_Store
+legacy/.streamlit/

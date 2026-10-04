@@ -1,0 +1,31 @@
+{
+  "recorded_at": "2026-10-04T09:45:01.960101+00:00",
+  "scope": "Public landmark acceptance only; no device GPS or private home address transmitted. Gemini retry pending user confirmation that .env was saved.",
+  "source_records": 282,
+  "place_provider": "Photon / OpenStreetMap",
+  "origin_public_landmark": {
+    "label": "India Gate, Shahjahan Road, New Delhi, Delhi",
+    "latitude": 28.6129332,
+    "longitude": 77.2294928
+  },
+  "destination_public_station": "Heritage City AC Charging Station",
+  "road_provider": "OSRM",
+  "distance_km": 24.352700000000002,
+  "duration_min": 27.34333333333333,
+  "arrival_soc_pct": 72.207136,
+  "legs": [
+    {
+      "source": "entered:origin",
+      "target": "record:a5d5d13f475f93d7171fdb64eaa8517d1bee1a61670534ef7dc73f8689a45d0c",
+      "distance_km": 24.352700000000002,
+      "estimated_travel_time_min": 27.34333333333333,
+      "can_charge": false,
+      "kind": "provider road leg"
+    }
+  ],
+  "source_unchanged": true,
+  "source_snapshot": "2ee144cf5153486e90e9cd0ba969a857",
+  "device_location": "success/permission/timeout/invalid-coordinate helper tests; actual device permission not requested",
+  "gemini_last_auth_status": 401,
+  "gemini_status": "Adapter implemented; exact local key replacement pending user ready message"
+}
