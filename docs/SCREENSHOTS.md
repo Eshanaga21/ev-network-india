@@ -179,3 +179,32 @@ Typed starting coordinates and an actual map click select distinct endpoints, wi
 Both endpoints expose current-location and map-selection controls. Device permission was not requested during verification; callback success/errors were unit-tested.
 
 ![Mobile trip form](screenshots/35-mobile-any-point-form.jpg)
+
+## Start navigation
+
+Public entered coordinates at both ends, OSRM road estimate and a Google Maps navigation link preserving the starting point and destination. The screenshot uses the existing local basemap while Google key activation is pending. Mobile turn-by-turn guidance was not device-tested.
+
+![Start navigation from entered coordinates](screenshots/36-start-navigation.jpg)
+
+## Live Google Maps trip
+
+Google Places selects the public starting landmark; the destination is entered as coordinates. Google Routes supplies road geometry, distance and duration. The battery estimate includes those road distances, and Start navigation preserves the selected endpoints. Google attribution remains visible. Nearby imported stations are grouped into clickable counts. Mobile guidance itself was not device-tested.
+
+![Live Google Maps trip and navigation](screenshots/37-google-maps-trip.jpg)
+
+
+## Personalised EV selection — 2026-10-07
+
+The source-backed chosen vehicle card distinguishes estimated distance to reserve from manufacturer-certified range and links the brochure edition.
+
+![Desktop vehicle card](screenshots/38-vehicle-desktop.jpg)
+
+Mobile confirmation uses a neutral original car illustration, edition/source labels and single-column battery inputs.
+
+![Mobile vehicle confirmation](screenshots/39-vehicle-mobile.jpg)
+
+A road trip with a modeled charging stop explicitly shows conditional connector compatibility and unknown charging time. The source tariff is also unknown; no price is invented.
+
+![Conditional battery trip](screenshots/40-vehicle-conditional-trip.jpg)
+
+Full results and limits: [vehicle verification report](verification/vehicle-selection-report.md).

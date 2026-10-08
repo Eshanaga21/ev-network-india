@@ -1,0 +1,56 @@
+{
+  "checked_on": "2026-10-07",
+  "backend_tests_passed": 79,
+  "frontend_tests_passed": 25,
+  "lint_format_and_production_build": "passed",
+  "google_transport_tests": "mocked; not live authentication evidence",
+  "live_server_checks": {
+    "public_query": "India Gate, New Delhi",
+    "places_http_status": 200,
+    "routes_http_status": 200,
+    "initial_failure": "older key blocked target APIs; new supplied key accesses all three APIs",
+    "complete_trip_http_status": 200,
+    "complete_trip_provider": "Google Maps Routes",
+    "complete_trip_mode": "road",
+    "battery_feasible": true,
+    "source_snapshot_unchanged": true
+  },
+  "browser_key_at_check": "configured",
+  "live_google_basemap": "verified in browser on 2026-10-07; Google tiles, legal attribution and advanced station markers visible",
+  "navigation_browser_check": {
+    "arbitrary_start": [
+      28.6129,
+      77.2295
+    ],
+    "arbitrary_destination": [
+      28.47,
+      77.08
+    ],
+    "trip_provider": "OSRM",
+    "distance_km_displayed": 27.2,
+    "button_visible": true,
+    "link_preserves_both_endpoints": true,
+    "station_navigation_button_visible": true,
+    "charging_legs": "ordered navigation links tested in unit tests",
+    "mobile_turn_by_turn": "not device-tested"
+  },
+  "source_records": "282; source files and active snapshot unchanged",
+  "credentials": "kept in ignored local .env; no real credentials in this artifact",
+  "google_station_clusters": {
+    "source_records": 282,
+    "visible_cluster_counts": [
+      219,
+      31,
+      13,
+      9,
+      2,
+      6,
+      2
+    ],
+    "count_sum": 282,
+    "purpose": "group nearby imported stations without adding records",
+    "click_to_zoom_verified": true
+  },
+  "google_services_status": "Maps JavaScript, Places API (New) and Routes API live-verified",
+  "local_key_setup": "one working user-supplied key currently serves both local browser and server fields; distinct restricted keys recommended before deployment"
+}

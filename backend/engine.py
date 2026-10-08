@@ -220,7 +220,10 @@ def snap(point, graph):
     }
 
 
-def battery_simulation(legs, path, vehicle):
+def battery_simulation(legs, path, vehicle, profile=None):
+    from backend.vehicles import charge_session
+
+    unknown_time, unknown_cost, total_cost, conditional = False, False, 0.0, False
     energy = vehicle.capacity_kwh * vehicle.initial_soc / 100
     reserve = vehicle.capacity_kwh * vehicle.reserve_soc / 100
     target = vehicle.capacity_kwh * vehicle.target_soc / 100
@@ -243,7 +246,11 @@ def battery_simulation(legs, path, vehicle):
         needed = leg["distance_km"] * vehicle.consumption_kwh_100km / 100
         if energy - needed < reserve - 1e-9:
             if not leg.get("can_charge", True):
-                reason = "Not enough starting charge to reach the next station or destination while keeping reserve. No charging is assumed at an arbitrary start."
+                reason = (
+                    "Not enough charge to reach the next point while keeping reserve. Charging here is excluded by connector compatibility settings."
+                    if profile and leg.get("charging_station")
+                    else "Not enough starting charge to reach the next station or destination while keeping reserve. No charging is assumed at an arbitrary start."
+                )
                 break
             if stops >= vehicle.max_stops:
                 reason = "Maximum modeled charging stops exceeded."
@@ -255,10 +262,29 @@ def battery_simulation(legs, path, vehicle):
                 reason = "Current SOC already exceeds target; the next leg cannot retain reserve."
                 break
             delta = target - energy
-            minutes = delta / (vehicle.assumed_charge_power_kw * vehicle.charge_efficiency) * 60
+            session = (
+                charge_session(
+                    profile,
+                    leg.get("charging_station", {}),
+                    energy / vehicle.capacity_kwh * 100,
+                    vehicle.target_soc,
+                    vehicle,
+                )
+                if profile
+                else {}
+            )
+            minutes = (
+                session.get("charge_time_min")
+                if profile
+                else delta / (vehicle.assumed_charge_power_kw * vehicle.charge_efficiency) * 60
+            )
+            unknown_time |= minutes is None
+            unknown_cost |= session.get("energy_cost_inr") is None
+            total_cost += session.get("energy_cost_inr") or 0
+            conditional |= session.get("conditional", False)
             energy = target
             added += delta
-            charge_minutes += minutes
+            charge_minutes += minutes or 0
             stops += 1
             timeline.append(
                 {
@@ -268,6 +294,7 @@ def battery_simulation(legs, path, vehicle):
                     "energy_kwh": delta,
                     "grid_energy_kwh": delta / vehicle.charge_efficiency,
                     "charge_time_min": minutes,
+                    **session,
                 }
             )
         energy -= needed
@@ -291,12 +318,20 @@ def battery_simulation(legs, path, vehicle):
         / 100,
         "charging_energy_kwh": added,
         "grid_energy_kwh": added / vehicle.charge_efficiency,
-        "charging_time_min": charge_minutes,
+        "charging_time_min": None if unknown_time else charge_minutes,
+        "energy_cost_inr": None if unknown_cost else total_cost,
+        "conditional_charging": conditional,
+        "vehicle_profile": profile,
+        "estimated_remaining_range_km": vehicle.capacity_kwh
+        * max(0, vehicle.initial_soc - vehicle.reserve_soc)
+        / vehicle.consumption_kwh_100km,
         "final_soc_pct": energy / vehicle.capacity_kwh * 100,
         "stops": stops,
         "timeline": timeline,
         "assumptions": vehicle.model_dump(),
-        "label": "User-configured model estimate; assumes charging is possible at route stations using entered power. Availability, connectors, queues and charging curves are not verified. Entered-point connector legs are included where present.",
+        "label": "Selected vehicle capacity with user consumption, reserve and average charging assumptions. Missing compatibility, charging limits and tariffs remain unknown. Availability is unverified; published pack capacity is a proxy for usable capacity."
+        if profile
+        else "User-configured model estimate; assumes charging is possible at route stations using entered power. Availability, connectors, queues and charging curves are not verified. Entered-point connector legs are included where present.",
     }
 
 
@@ -328,6 +363,9 @@ def route(graph, request):
             "reason": "No path in this geographic-proximity graph. Increase radius or change k-nearest-neighbor settings; this does not establish road reachability.",
         }
     runtime = (perf_counter() - start) * 1000
+    from backend.vehicles import permitted, resolve
+
+    profile = resolve(request.ev_profile) if request.ev_profile else None
     legs = [{"source": x, "target": y, **graph.edges[x, y]} for x, y in zip(path, path[1:])]
     network_distance = sum(leg["distance_km"] for leg in legs)
     trip_path = list(path)
@@ -360,6 +398,13 @@ def route(graph, request):
             }
         )
         trip_path.append("entered:destination")
+    if profile:
+        for leg in legs:
+            station = graph.nodes[leg["source"]] if leg["source"] in graph else {}
+            leg["charging_station"] = station
+            leg["can_charge"] = leg.get("can_charge", True) and permitted(
+                profile, station, request.ev_profile.allow_unknown_connectors
+            )
     bridges = {frozenset(edge) for edge in nx.bridges(graph)}
     arts = set(nx.articulation_points(graph))
     bridge_legs = [leg for leg in legs if frozenset([leg["source"], leg["target"]]) in bridges]
@@ -391,7 +436,7 @@ def route(graph, request):
             "component_size": len(nx.node_connected_component(graph, a)),
             "formula": "High: at least one bridge edge; Moderate: articulation on path or geographic leg >50km; otherwise Low. Topological heuristic, not driving safety.",
         },
-        "battery": battery_simulation(legs, trip_path, request.vehicle),
+        "battery": battery_simulation(legs, trip_path, request.vehicle, profile),
         "label": "Calculated geographic-proximity route; travel time is a user-configured speed estimate. Entered-point connector legs are included in route and battery totals; these are geographic estimates, not roads.",
     }
 

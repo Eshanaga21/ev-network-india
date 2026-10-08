@@ -2681,7 +2681,7 @@ function Capabilities({
     {
       feature: "Provider road distance / time",
       fields: "configured OSRM provider",
-      enabled: Boolean(providers?.road_provider),
+      enabled: Boolean(providers?.academic_road_provider),
     },
     {
       feature: "Geocoding",

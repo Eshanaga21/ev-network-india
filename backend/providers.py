@@ -70,6 +70,8 @@ def road_response(base_url, coordinates, time_bucket):
 
 
 class OSRMProvider:
+    name = "OSRM"
+
     def __init__(self, base_url):
         self.base_url = base_url.rstrip("/")
 
@@ -123,6 +125,8 @@ def place_response(base_url, query, time_bucket):
 
 
 class PhotonProvider:
+    name = "Photon / OpenStreetMap"
+
     def __init__(self, base_url):
         self.base_url = base_url.rstrip("/")
 
@@ -131,10 +135,22 @@ class PhotonProvider:
 
 
 def get_provider():
+    from backend.google_maps import GoogleRoutesProvider, configured
+
+    if configured():
+        return GoogleRoutesProvider()
+    return get_academic_provider()
+
+
+def get_academic_provider():
     url = os.getenv("EV_OSRM_URL", "https://router.project-osrm.org")
     return OSRMProvider(url) if url else None
 
 
 def get_geocoder():
+    from backend.google_maps import GooglePlacesProvider, configured
+
+    if configured():
+        return GooglePlacesProvider()
     url = os.getenv("EV_GEOCODER_URL", "https://photon.komoot.io")
     return PhotonProvider(url) if url else None

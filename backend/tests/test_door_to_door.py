@@ -112,7 +112,17 @@ def test_trip_api_falls_back_honestly_on_road_failure(loaded, monkeypatch):
     monkeypatch.setattr("backend.main.get_provider", lambda: Broken())
     result = loaded.post(
         "/api/trip",
-        json={"origin": {"latitude": 28.01, "longitude": 77}, "destination": {"station_id": "1"}},
+        json={
+            "origin": {"latitude": 28.01, "longitude": 77},
+            "destination": {"station_id": "1"},
+            "ev_profile": {
+                "custom": {
+                    "name": "Test EV",
+                    "battery_capacity_kwh": 50,
+                    "connector_types": ["CCS2"],
+                }
+            },
+        },
     ).json()
     assert result["route_mode"] == "geographic"
     assert "Road service is unavailable" in result["road_error"]
@@ -217,7 +227,13 @@ def test_gemini_auth_error_is_safe_and_calculations_remain_available(loaded, mon
         status_code = 401
 
     monkeypatch.setattr("backend.gemini.httpx.post", lambda *a, **k: Response())
-    body = {"origin": {"station_id": "0"}, "destination": {"station_id": "1"}}
+    body = {
+        "origin": {"station_id": "0"},
+        "destination": {"station_id": "1"},
+        "ev_profile": {
+            "custom": {"name": "Test EV", "battery_capacity_kwh": 50, "connector_types": ["CCS2"]}
+        },
+    }
     response = loaded.post("/api/trip/explain", json=body)
     assert response.status_code == 502
     assert "test-only-credential" not in response.text

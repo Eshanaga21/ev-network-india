@@ -43,6 +43,7 @@ class Vehicle(StrictModel):
     target_soc: float = Field(default=90, gt=0, le=100)
     assumed_charge_power_kw: float = Field(default=30, gt=0, le=1000)
     charge_efficiency: float = Field(default=0.9, gt=0, le=1)
+    average_charge_fraction: float = Field(default=0.7, gt=0, lt=1)
     max_stops: int = Field(default=5, ge=0, le=100)
 
     @model_validator(mode="after")
@@ -52,11 +53,47 @@ class Vehicle(StrictModel):
         return self
 
 
+Connector = Literal["CCS2", "Type2", "CHAdeMO", "GB/T DC", "GB/T AC", "CCS1", "Type1", "NACS"]
+
+
+class CustomEV(StrictModel):
+    name: str = Field(min_length=1, max_length=80)
+    battery_capacity_kwh: float = Field(gt=0, le=500)
+    connector_types: list[Connector] = Field(min_length=1, max_length=8)
+    max_ac_charge_kw: float | None = Field(default=None, gt=0, le=1000)
+    max_dc_charge_kw: float | None = Field(default=None, gt=0, le=1000)
+
+    @model_validator(mode="after")
+    def valid_name(self):
+        self.name = self.name.strip()
+        if not self.name:
+            raise ValueError("Give your custom vehicle a name.")
+        self.connector_types = list(dict.fromkeys(self.connector_types))
+        return self
+
+
+class EVSelection(StrictModel):
+    catalog_id: str | None = Field(default=None, min_length=1, max_length=150)
+    custom: CustomEV | None = None
+    allow_unknown_connectors: bool = True
+
+    @model_validator(mode="after")
+    def one_profile(self):
+        if bool(self.catalog_id) == bool(self.custom):
+            raise ValueError("Select one catalogue vehicle or provide a custom EV profile.")
+        return self
+
+
 class RouteRequest(Context):
     origin: Point
     destination: Point
     algorithm: Literal["dijkstra", "astar"] = "dijkstra"
     vehicle: Vehicle = Field(default_factory=Vehicle)
+    ev_profile: EVSelection | None = None
+
+
+class TripRequest(RouteRequest):
+    ev_profile: EVSelection
 
 
 class RemovalRequest(Context):

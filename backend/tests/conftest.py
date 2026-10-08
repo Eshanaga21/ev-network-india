@@ -52,3 +52,5 @@ def isolate_external_services(monkeypatch):
     monkeypatch.setenv("EV_OSRM_URL", "")
     monkeypatch.setenv("EV_GEOCODER_URL", "")
     monkeypatch.setenv("GEMINI_API_KEY", "")
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "")
+    monkeypatch.setenv("GOOGLE_MAPS_BROWSER_KEY", "")

@@ -9,11 +9,11 @@ from collections import OrderedDict
 from importlib.metadata import version
 
 import httpx
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, StreamingResponse
 
-from backend import engine, gemini
+from backend import engine, gemini, google_maps, vehicles
 from backend.ingestion import FIELDS, normalize
 from backend.models import (
     AccessibilityRequest,
@@ -27,8 +27,9 @@ from backend.models import (
     ReportRequest,
     RouteRequest,
     Scenario,
+    TripRequest,
 )
-from backend.providers import get_geocoder, get_provider
+from backend.providers import get_academic_provider, get_geocoder, get_provider
 from backend.regions import canonical_state, regional_dataset
 from backend.store import Store
 from backend.trips import road_trip
@@ -132,26 +133,50 @@ def create_app(data_dir=None):
     def health():
         return {
             "status": "ok",
-            "road_provider": "OSRM" if get_provider() else None,
-            "geocoding_provider": "Photon / OpenStreetMap" if get_geocoder() else None,
+            "road_provider": get_provider().name if get_provider() else None,
+            "geocoding_provider": get_geocoder().name if get_geocoder() else None,
+            "google_maps_configured": google_maps.configured(),
+            "google_maps_browser_configured": bool(google_maps.map_config()["browser_key"]),
+            "academic_road_provider": "OSRM" if get_academic_provider() else None,
             "gemini_configured": gemini.settings()[0],
             "gemini_model": gemini.settings()[1] if gemini.settings()[0] else None,
         }
 
+    @app.get("/api/maps/config")
+    def maps_config(response: Response):
+        # Only the referrer-restricted browser key is meant for client use.
+        response.headers["Cache-Control"] = "no-store"
+        return google_maps.map_config()
+
     @app.post("/api/places/search")
-    def search_places(request: PlaceSearchRequest):
+    def search_places(request: PlaceSearchRequest, response: Response):
+        response.headers["Cache-Control"] = "no-store"
         provider = get_geocoder()
         if not provider:
             raise HTTPException(503, "Place search is disabled. Enter latitude, longitude instead.")
         try:
             return provider.search(request.query.strip())
         except (httpx.HTTPError, ValueError, KeyError, TypeError):
+            message = (
+                "Google place search is unavailable. Check Maps API keys, enabled APIs, billing and quota, or enter latitude, longitude."
+                if google_maps.configured()
+                else "Place search is temporarily unavailable. Try again or enter latitude, longitude."
+            )
             raise HTTPException(
                 502,
-                "Place search is temporarily unavailable. Try again or enter latitude, longitude.",
+                message,
             ) from None
 
     def calculate_trip(request):
+        if request.ev_profile:
+            profile = vehicles.resolve(request.ev_profile)
+            request = request.model_copy(
+                update={
+                    "vehicle": request.vehicle.model_copy(
+                        update={"capacity_kwh": profile["battery_capacity_kwh"]}
+                    )
+                }
+            )
         _, graph, audit = context(request)
         provider = get_provider()
         warning = None
@@ -160,6 +185,8 @@ def create_app(data_dir=None):
                 result = road_trip(graph, request, provider)
             except (httpx.HTTPError, ValueError, KeyError, TypeError):
                 warning = "Road service is unavailable for this trip. Showing a geographic model estimate, including start/end connector distances."
+                if google_maps.configured():
+                    warning = "Google Maps route request failed. Check enabled APIs, key restrictions, billing or quota. Showing a geographic model including start/end connectors; navigation in Google Maps can still be opened."
             else:
                 return {
                     **result,
@@ -168,8 +195,11 @@ def create_app(data_dir=None):
                         "origin": request.origin.model_dump(),
                         "destination": request.destination.model_dump(),
                         "vehicle": request.vehicle.model_dump(),
+                        "ev_selection": request.ev_profile.model_dump()
+                        if request.ev_profile
+                        else None,
                         "route_mode": "road",
-                        "provider": "OSRM",
+                        "provider": result["road_route"]["provider"],
                         "charging_plan": result["charging_plan"],
                     },
                 }
@@ -192,16 +222,22 @@ def create_app(data_dir=None):
                 "origin": request.origin.model_dump(),
                 "destination": request.destination.model_dump(),
                 "vehicle": request.vehicle.model_dump(),
+                "ev_selection": request.ev_profile.model_dump() if request.ev_profile else None,
                 "route_mode": "geographic",
             },
         }
 
+    @app.get("/api/vehicles")
+    def vehicle_catalog():
+        return vehicles.catalog()
+
     @app.post("/api/trip")
-    def trip(request: RouteRequest):
+    def trip(request: TripRequest, response: Response):
+        response.headers["Cache-Control"] = "no-store"
         return calculate_trip(request)
 
     @app.post("/api/trip/explain")
-    def explain_trip(request: RouteRequest):
+    def explain_trip(request: TripRequest):
         try:
             return gemini.explain(calculate_trip(request))
         except (httpx.HTTPError, ValueError):
@@ -293,7 +329,7 @@ def create_app(data_dir=None):
     def route(request: RouteRequest):
         _, graph, audit = context(request)
         result = engine.route(graph, request)
-        provider = get_provider()
+        provider = get_academic_provider()
         if result["found"] and provider and len(result["path"]) > 1:
             try:
                 result["road_route"] = provider.route(

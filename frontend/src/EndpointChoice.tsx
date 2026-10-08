@@ -54,7 +54,8 @@ export default function EndpointChoice({
     lookup.data?.query === query.trim()
       ? lookup.data.data.places.map((p: any) => ({
           label: p.label,
-          detail: "Place · OpenStreetMap",
+          detail: `Place · ${p.provider?.startsWith("Google") ? "Google Maps" : "OpenStreetMap"}`,
+          attributions: p.attributions || [],
           value: {
             label: p.label,
             source: "place",
@@ -248,6 +249,10 @@ export default function EndpointChoice({
             >
               <strong>{option.label}</strong>
               <small>{option.detail}</small>
+              {"attributions" in option &&
+                option.attributions.map((a: any, i: number) => (
+                  <small key={i}>{a.provider}</small>
+                ))}
             </button>
           ))}
           {!options.length && !lookup.isPending && (
@@ -259,7 +264,7 @@ export default function EndpointChoice({
           )}
           {!!places.length && (
             <small className="finder-point-note">
-              OpenStreetMap contributors · Photon
+              {lookup.data?.data.attribution} · {lookup.data?.data.provider}
             </small>
           )}
         </div>

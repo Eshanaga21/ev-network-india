@@ -22,6 +22,7 @@ FIELDS = [
     "connector_type",
     "num_chargers",
     "charging_power_kw",
+    "tariff_inr_per_kwh",
     "address",
     "source_type",
 ]
@@ -146,7 +147,7 @@ def normalize(
             continue
         seen.add(row["station_id"])
         row.update(latitude=lat, longitude=lon)
-        for field in ("num_chargers", "charging_power_kw"):
+        for field in ("num_chargers", "charging_power_kw", "tariff_inr_per_kwh"):
             value = numeric(row[field])
             if row[field] is not None and (
                 value is None

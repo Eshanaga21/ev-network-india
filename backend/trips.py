@@ -3,6 +3,7 @@
 import math
 
 from backend import engine
+from backend.vehicles import permitted, resolve
 
 CORRIDOR_KM = 5
 
@@ -36,6 +37,13 @@ def corridor_stations(stations, road):
 
 
 def selected_stops(stations, road, request):
+    profile = resolve(request.ev_profile) if request.ev_profile else None
+    if profile:
+        stations = [
+            s
+            for s in stations
+            if permitted(profile, s, request.ev_profile.allow_unknown_connectors)
+        ]
     vehicle = request.vehicle
     per_km = vehicle.consumption_kwh_100km / 100
     initial_range = (
@@ -45,7 +53,9 @@ def selected_stops(stations, road, request):
     # If the start is an observed station, modeled charging there is permitted.
     reach = (
         full_range
-        if request.origin.station_id and initial_range < road["distance_km"]
+        if request.origin.station_id
+        and any(s["station_id"] == request.origin.station_id for s in stations)
+        and initial_range < road["distance_km"]
         else initial_range
     )
     if reach >= road["distance_km"]:
@@ -118,9 +128,17 @@ def road_trip(graph, request, provider):
                 "kind": "provider road leg",
             }
         )
-    battery = engine.battery_simulation(legs, ids, request.vehicle)
+    profile = resolve(request.ev_profile) if request.ev_profile else None
+    if profile:
+        for leg in legs:
+            station = graph.nodes[leg["source"]] if leg["source"] in graph else {}
+            leg["charging_station"] = station
+            leg["can_charge"] = leg["can_charge"] and permitted(
+                profile, station, request.ev_profile.allow_unknown_connectors
+            )
+    battery = engine.battery_simulation(legs, ids, request.vehicle, profile)
     battery["label"] = (
-        "Road leg distances with user-entered battery and charging assumptions. Charging at source stations is modeled; availability and compatibility are unverified. No charging assumed at arbitrary starting points."
+        "Road distances with selected vehicle capacity and user-entered consumption. Charging is conditional on recorded connector data; availability is unverified. Unknown connector, power or tariff remains unknown. No charging assumed at arbitrary starting points."
     )
     for endpoint, point in ((origin, request.origin), (destination, request.destination)):
         endpoint["label"] = point.label or (

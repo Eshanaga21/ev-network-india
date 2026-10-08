@@ -1,0 +1,343 @@
+{
+  "version": 1,
+  "verified_on": "2026-10-07",
+  "notice": "Verified brochure editions. Match the edition and battery to your own vehicle; newer revisions can differ. Certified test range is not real-world trip range. Consumption is a user planning assumption.",
+  "vehicles": [
+    {
+      "id": "tata-tiagoev-xe-mr-192",
+      "manufacturer": "Tata",
+      "model": "Tiago.ev",
+      "variant": "XE MR",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 19.2,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 223,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: approximately 58 min, manufacturer test conditions; no DC power limit or full curve specified.",
+      "source": {
+        "title": "Tata Tiago.ev 2025 brochure (manufacturer-hosted regional mirror), pp. 24\u201325",
+        "url": "https://cars.tatamotors.lk/images/Tiago-ev-brochure-2025-dom.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "tata-tiagoev-xt-mr-192",
+      "manufacturer": "Tata",
+      "model": "Tiago.ev",
+      "variant": "XT MR",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 19.2,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 223,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: approximately 58 min, manufacturer test conditions; no DC power limit or full curve specified.",
+      "source": {
+        "title": "Tata Tiago.ev 2025 brochure (manufacturer-hosted regional mirror), pp. 24\u201325",
+        "url": "https://cars.tatamotors.lk/images/Tiago-ev-brochure-2025-dom.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "tata-tiagoev-xt-lr-24",
+      "manufacturer": "Tata",
+      "model": "Tiago.ev",
+      "variant": "XT LR",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 24,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 293,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: approximately 58 min, manufacturer test conditions; no DC power limit or full curve specified.",
+      "source": {
+        "title": "Tata Tiago.ev 2025 brochure (manufacturer-hosted regional mirror), pp. 24\u201325",
+        "url": "https://cars.tatamotors.lk/images/Tiago-ev-brochure-2025-dom.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "tata-tiagoev-xzplus-tech-lux-lr-24",
+      "manufacturer": "Tata",
+      "model": "Tiago.ev",
+      "variant": "XZ+ Tech Lux LR",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 24,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 293,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: approximately 58 min, manufacturer test conditions; no DC power limit or full curve specified.",
+      "source": {
+        "title": "Tata Tiago.ev 2025 brochure (manufacturer-hosted regional mirror), pp. 24\u201325",
+        "url": "https://cars.tatamotors.lk/images/Tiago-ev-brochure-2025-dom.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "hyundai-creta-electric-executive-42",
+      "manufacturer": "Hyundai",
+      "model": "CRETA Electric",
+      "variant": "Executive",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 42,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 390,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: 58 min using a 50 kW DC charger; charger rating is not a vehicle maximum.",
+      "source": {
+        "title": "Hyundai CRETA Electric launch brochure, technical specifications p. 16",
+        "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/cretaelctricbrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "hyundai-creta-electric-smart-42",
+      "manufacturer": "Hyundai",
+      "model": "CRETA Electric",
+      "variant": "Smart",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 42,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 390,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: 58 min using a 50 kW DC charger; charger rating is not a vehicle maximum.",
+      "source": {
+        "title": "Hyundai CRETA Electric launch brochure, technical specifications p. 16",
+        "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/cretaelctricbrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "hyundai-creta-electric-smart-o-42",
+      "manufacturer": "Hyundai",
+      "model": "CRETA Electric",
+      "variant": "Smart (O)",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 42,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 390,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: 58 min using a 50 kW DC charger; charger rating is not a vehicle maximum.",
+      "source": {
+        "title": "Hyundai CRETA Electric launch brochure, technical specifications p. 16",
+        "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/cretaelctricbrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "hyundai-creta-electric-premium-42",
+      "manufacturer": "Hyundai",
+      "model": "CRETA Electric",
+      "variant": "Premium",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 42,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 390,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: 58 min using a 50 kW DC charger; charger rating is not a vehicle maximum.",
+      "source": {
+        "title": "Hyundai CRETA Electric launch brochure, technical specifications p. 16",
+        "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/cretaelctricbrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "hyundai-creta-electric-smart-o-long-range-514",
+      "manufacturer": "Hyundai",
+      "model": "CRETA Electric",
+      "variant": "Smart (O) Long Range",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 51.4,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 473,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: 58 min using a 50 kW DC charger; charger rating is not a vehicle maximum.",
+      "source": {
+        "title": "Hyundai CRETA Electric launch brochure, technical specifications p. 16",
+        "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/cretaelctricbrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "hyundai-creta-electric-excellence-long-range-514",
+      "manufacturer": "Hyundai",
+      "model": "CRETA Electric",
+      "variant": "Excellence Long Range",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 51.4,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 473,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 ARAI",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": null,
+      "charging_curve": null,
+      "charging_reference": "10\u201380%: 58 min using a 50 kW DC charger; charger rating is not a vehicle maximum.",
+      "source": {
+        "title": "Hyundai CRETA Electric launch brochure, technical specifications p. 16",
+        "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/cretaelctricbrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "mg-windsor-ev-excite-38",
+      "manufacturer": "MG",
+      "model": "Windsor EV",
+      "variant": "Excite",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 38,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 332,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 certifying authority",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": 45,
+      "charging_curve": null,
+      "charging_reference": "20\u201380%: approximately 45 min using a 45 kW DC charger. This window is not a full charging curve.",
+      "source": {
+        "title": "MG Windsor EV PRO May 2025 brochure, specifications p. 40 (official dealer host)",
+        "url": "https://dealers.mgmotor.co.in/files/banner_images/349472/2151_1746535393_NewWindsorEVPROBrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "mg-windsor-ev-exclusive-38",
+      "manufacturer": "MG",
+      "model": "Windsor EV",
+      "variant": "Exclusive",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 38,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 332,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 certifying authority",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": 45,
+      "charging_curve": null,
+      "charging_reference": "20\u201380%: approximately 45 min using a 45 kW DC charger. This window is not a full charging curve.",
+      "source": {
+        "title": "MG Windsor EV PRO May 2025 brochure, specifications p. 40 (official dealer host)",
+        "url": "https://dealers.mgmotor.co.in/files/banner_images/349472/2151_1746535393_NewWindsorEVPROBrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "mg-windsor-ev-essence-38",
+      "manufacturer": "MG",
+      "model": "Windsor EV",
+      "variant": "Essence",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 38,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 332,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 certifying authority",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": 45,
+      "charging_curve": null,
+      "charging_reference": "20\u201380%: approximately 45 min using a 45 kW DC charger. This window is not a full charging curve.",
+      "source": {
+        "title": "MG Windsor EV PRO May 2025 brochure, specifications p. 40 (official dealer host)",
+        "url": "https://dealers.mgmotor.co.in/files/banner_images/349472/2151_1746535393_NewWindsorEVPROBrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    },
+    {
+      "id": "mg-windsor-ev-essence-pro-529",
+      "manufacturer": "MG",
+      "model": "Windsor EV",
+      "variant": "Essence Pro",
+      "edition": "2025 brochure edition",
+      "battery_capacity_kwh": 52.9,
+      "connector_types": [
+        "CCS2"
+      ],
+      "connector_coverage_complete": false,
+      "certified_range_km": 449,
+      "range_standard": "MIDC Part 1 + Part 2 \u00b7 certifying authority",
+      "max_ac_charge_kw": null,
+      "max_dc_charge_kw": 60,
+      "charging_curve": null,
+      "charging_reference": "20\u201380%: approximately 50 min using a 60 kW DC charger. This window is not a full charging curve.",
+      "source": {
+        "title": "MG Windsor EV PRO May 2025 brochure, specifications p. 40 (official dealer host)",
+        "url": "https://dealers.mgmotor.co.in/files/banner_images/349472/2151_1746535393_NewWindsorEVPROBrochure.pdf"
+      },
+      "verified_on": "2026-10-07",
+      "notes": "Published pack capacity; usable capacity is not specified. Only CCS2 is explicitly recorded; other connectors remain unverified. Brochure edition, not a claim of current dealer availability."
+    }
+  ]
+}
