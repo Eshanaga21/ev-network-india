@@ -7,6 +7,7 @@ import { Layers, LocateFixed, Minus, Plus } from "lucide-react";
 import type { Station } from "./types";
 import { useUI } from "./store";
 import { REGION_BOUNDS } from "./regionGeometry";
+import { useTheme } from "./theme";
 const collection = (features: any[]) =>
   ({ type: "FeatureCollection", features }) as GeoJSON.FeatureCollection;
 export default function MapView({
@@ -30,6 +31,7 @@ export default function MapView({
   onPointPick?: (latitude: number, longitude: number) => void;
   enteredPoints?: { latitude: number; longitude: number; label: string }[];
 }) {
+  const theme = useTheme((s) => s.theme);
   const element = useRef<HTMLDivElement>(null),
     map = useRef<LibreMap | null>(null);
   const [ready, setReady] = useState(false),
@@ -314,6 +316,25 @@ export default function MapView({
       map.current = null;
     };
   }, [simple]);
+  useEffect(() => {
+    const m = map.current;
+    if (!ready || !m) return;
+    m.setPaintProperty(
+      "background",
+      "background-color",
+      theme === "light" ? "#d9edf3" : simple ? "#101c20" : "#090f18",
+    );
+    m.setPaintProperty(
+      "land",
+      "fill-color",
+      theme === "light" ? "#edf3e8" : simple ? "#263033" : "#131f2c",
+    );
+    m.setPaintProperty(
+      "borders",
+      "line-color",
+      theme === "light" ? "#91aaa5" : simple ? "#56605c" : "#334155",
+    );
+  }, [theme, ready, simple]);
   useEffect(() => {
     if (!ready || !map.current) return;
     fit();

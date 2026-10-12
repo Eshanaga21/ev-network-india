@@ -49,6 +49,7 @@ import {
   Viva,
 } from "./shared";
 import MapView from "./MapView";
+import ThemeToggle from "./theme";
 const tabs: { name: Tab; icon: typeof Navigation }[] = [
   { name: "Trip Planner", icon: Navigation },
   { name: "Infrastructure", icon: Layers },
@@ -609,6 +610,7 @@ export default function Console({
           </button>
         </div>
         <div className="header-actions">
+          <ThemeToggle />
           {onBack && (
             <button className="quiet" onClick={onBack}>
               ← Station finder

@@ -1,13 +1,20 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Zap } from "lucide-react";
 import { request } from "./api";
 import type { Dataset } from "./types";
 import { Loading, Notice } from "./shared";
 import Onboarding from "./Onboarding";
+import { useTheme } from "./theme";
+import "./theme.css";
 const Console = lazy(() => import("./Console"));
 const StationFinder = lazy(() => import("./StationFinder"));
 export default function App() {
+  const theme = useTheme((s) => s.theme);
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  }, [theme]);
   const [research, setResearch] = useState(false);
   const dataset = useQuery<Dataset>({
     queryKey: ["dataset"],

@@ -2,8 +2,10 @@ import { lazy, Suspense } from "react";
 import { useQuery } from "@tanstack/react-query";
 import MapView from "./MapView";
 import { request } from "./api";
+import { useTheme } from "./theme";
 const GoogleMapView = lazy(() => import("./GoogleMapView"));
 export default function FinderMap(props: React.ComponentProps<typeof MapView>) {
+  const theme = useTheme((s) => s.theme);
   const config = useQuery({
     queryKey: ["maps-config"],
     queryFn: () => request("maps/config"),
@@ -33,6 +35,8 @@ export default function FinderMap(props: React.ComponentProps<typeof MapView>) {
       }
     >
       <GoogleMapView
+        key={theme}
+        theme={theme}
         config={config.data}
         stations={props.stations}
         route={props.route}

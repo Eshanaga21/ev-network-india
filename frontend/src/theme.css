@@ -1,0 +1,458 @@
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+.cost-calculator {
+  max-width: 680px;
+  margin: auto;
+}
+.modal .cost-lead {
+  font-size: 21px;
+  color: #9bdfce;
+}
+.cost-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+}
+.cost-inputs small {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #99b4ba;
+}
+.cost-totals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.cost-totals > div {
+  background: #1d2e34;
+  border: 1px solid #405357;
+  border-radius: 12px;
+  padding: 18px;
+  display: grid;
+  gap: 7px;
+}
+.cost-totals small {
+  font-size: 12px;
+  color: #afc4c8;
+}
+.cost-totals strong {
+  font-size: 27px;
+  color: #edf7f4;
+}
+.cost-totals span {
+  font-size: 11px;
+  color: #b0c4c7;
+}
+.cost-totals .cost-saved {
+  background: #173d33;
+  border-color: #3e806f;
+}
+.cost-totals .cost-saved strong {
+  color: #8fe3c5;
+}
+.cost-totals .cost-extra {
+  background: #3b2c20;
+  border-color: #836244;
+}
+.modal .cost-note,
+.cost-note {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #a5bac1;
+}
+.trip-cost .cost-inputs {
+  grid-template-columns: 1fr;
+}
+.trip-cost .cost-totals {
+  grid-template-columns: 1fr;
+}
+.trip-cost .ev-field {
+  font-size: 12px;
+}
+.trip-cost summary {
+  color: #8fe3c5;
+}
+@media (max-width: 600px) {
+  .cost-inputs,
+  .cost-totals {
+    grid-template-columns: 1fr;
+  }
+  .finder-header {
+    gap: 8px;
+  }
+  .finder .finder-header-actions {
+    gap: 9px;
+  }
+  .finder .finder-header-actions button {
+    padding: 8px;
+    min-height: 40px;
+    min-width: 36px;
+  }
+  .finder .finder-header-actions button > span {
+    display: none;
+  }
+  .finder .finder-header-actions button > svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  background: #f2f6f5;
+  color: #183530;
+  --bg: #f2f6f5;
+  --panel: #fff;
+  --border: #ccd9d5;
+  --text: #183530;
+  --muted: #4c6660;
+  --green: #007760;
+}
+:root[data-theme="light"] body {
+  background: #f2f6f5;
+  color: #183530;
+}
+:root[data-theme="light"] .finder {
+  --mint: #087c63;
+  --teal: #0c8b73;
+  --ink: #e8f4ef;
+  --line: #cadbd5;
+  --soft: #536b65;
+  background: #f4f8f6;
+  color: #163e34;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-header,
+    .finder-sidebar,
+    .finder-sidebar-footer,
+    .finder-detail,
+    .finder-map-title,
+    .finder-scope-pill,
+    .finder-tabs,
+    .finder-search,
+    .finder-state > div,
+    .finder-state select,
+    .finder-extra-settings,
+    .finder-trip-placeholder,
+    .ev-summary,
+    .ev-summary-main,
+    .finder-trip-result,
+    .modal,
+    .sidebar,
+    .topbar,
+    .console-header,
+    .panel,
+    .card,
+    .metric,
+    .startup
+  ) {
+  background: #fff;
+  color: #183d33;
+  border-color: #ccdcd5;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-brand,
+    .finder-intro h1,
+    .finder-station strong,
+    .finder-detail h2,
+    .finder-trip-result h2,
+    .ev-summary-main strong,
+    .modal h2,
+    .modal h3,
+    .ev-saved strong,
+    .metric strong
+  ) {
+  color: #183d33;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-intro p,
+    .finder-brand small,
+    .finder-region-note,
+    .finder-header-actions button,
+    .finder-station small,
+    .finder-small-note,
+    .finder-trip-note,
+    .finder-endpoint-note,
+    .finder-extra-settings p,
+    .finder-trip-result p,
+    .finder-detail p,
+    .finder-detail small,
+    .ev-summary-main small,
+    .ev-summary-main span,
+    .ev-range small,
+    .ev-range span,
+    .ev-hint,
+    .ev-edition-note,
+    .ev-privacy,
+    .ev-filter,
+    .ev-field,
+    .modal p,
+    .cost-inputs small,
+    .cost-note,
+    .cost-totals small,
+    .cost-totals span
+  ) {
+  color: #49665e;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-intro h1 em,
+    .finder-eyebrow,
+    .ev-range strong,
+    .ev-summary-main button,
+    .ev-compatibility,
+    .ev-source a,
+    .ev-source summary,
+    .ev-steps .active,
+    .trip-cost summary,
+    .modal .cost-lead,
+    .finder-secondary-toggle,
+    .finder-load-more,
+    .finder-clear-trip
+  ) {
+  color: #08765f;
+}
+:root[data-theme="light"]
+  :is(
+    .finder input,
+    .finder select,
+    .modal input,
+    .modal select,
+    .finder-endpoint-input,
+    .search-input,
+    .field input,
+    .field select,
+    .ev-field input,
+    .ev-field select
+  ) {
+  background: #fff;
+  color: #173d32;
+  border-color: #afc6bd;
+}
+:root[data-theme="light"] .finder input::placeholder,
+:root[data-theme="light"] .modal input::placeholder {
+  color: #6e817b;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-tabs button,
+    .ev-steps span,
+    .ev-garage summary,
+    .ev-saved button,
+    .finder-tool-link,
+    .finder-sidebar-footer button,
+    .theme-toggle
+  ) {
+  color: #28584a;
+}
+:root[data-theme="light"] .finder-tabs button.active {
+  background: #bae9d7;
+  color: #0b4434;
+}
+:root[data-theme="light"]
+  :is(
+    .ev-select-prompt,
+    .finder-station-icon,
+    .finder-station:hover,
+    .finder-station.selected
+  ) {
+  background: #e5f3ed;
+  color: #0b6c51;
+  border-color: #9bcab8;
+}
+:root[data-theme="light"] .ev-select-prompt strong {
+  color: #154635;
+}
+:root[data-theme="light"] .ev-select-prompt small {
+  color: #43665b;
+}
+:root[data-theme="light"]
+  :is(
+    .ev-range,
+    .ev-garage,
+    .ev-saved,
+    .ev-connectors,
+    .finder-station,
+    .ev-steps
+  ) {
+  border-color: #c3d7ce;
+}
+:root[data-theme="light"] .finder-primary {
+  background: #147d60;
+  color: #fff;
+}
+:root[data-theme="light"] .modal:has(.ev-selector) > header {
+  background: #fff;
+}
+:root[data-theme="light"] :is(.cost-totals > div, .notice) {
+  background: #f0f7f3;
+  border-color: #b4d2c4;
+  color: #31554a;
+}
+:root[data-theme="light"] .cost-totals strong {
+  color: #1a4837;
+}
+:root[data-theme="light"] .cost-totals .cost-saved {
+  background: #dcf3e7;
+  border-color: #8bc6a8;
+}
+:root[data-theme="light"] .cost-totals .cost-saved strong {
+  color: #06653e;
+}
+:root[data-theme="light"] .cost-totals .cost-extra {
+  background: #fff0db;
+  border-color: #daba81;
+}
+:root[data-theme="light"] .notice.error {
+  background: #fff0eb;
+  color: #8b3027;
+  border-color: #e2b1a9;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-picker-input,
+    .finder-picker-options,
+    .finder-map .maplibregl-ctrl-attrib,
+    .finder-map-status,
+    .finder-navigation
+  ) {
+  background: #fff;
+  border-color: #b8d1c5;
+  color: #173d32;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-picker-options strong,
+    .finder-picker-options button,
+    .finder-picker > label,
+    .ev-selector,
+    .ev-selector-lead,
+    .ev-connectors,
+    .finder-location-actions button
+  ) {
+  color: #173d32;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-picker-options small,
+    .finder-picker-options p,
+    .finder-point-note,
+    .ev-selector-lead small,
+    .finder-detail-info label
+  ) {
+  color: #4b6b5d;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-picker-options > button:hover,
+    .finder-picker-options > button[aria-selected="true"]
+  ) {
+  background: #e0f3e8;
+}
+:root[data-theme="light"]
+  :is(
+    .app-header,
+    .workspace-tabs,
+    .source-pill,
+    .table-wrap,
+    .onboard-console,
+    .onboard-upload,
+    .onboard-preview,
+    .map-controls,
+    .map-legend,
+    .map-overlay,
+    .map-info
+  ) {
+  background: #fff;
+  color: #193d33;
+  border-color: #c1d4cb;
+}
+:root[data-theme="light"] .onboarding {
+  background: #f1f7f4;
+}
+:root[data-theme="light"]
+  :is(
+    .workspace-intro p,
+    .workspace-tabs > button,
+    .viva-toggle,
+    .brand,
+    .table-wrap td,
+    .table-wrap th
+  ) {
+  color: #49665e;
+}
+:root[data-theme="light"] :is(.primary, .button-primary) {
+  background: #147d60;
+  color: #fff;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-google-map .map-tools button,
+    .finder .input-unit,
+    .input-unit,
+    .finder-city-chips button,
+    .ev-garage summary span
+  ) {
+  background: #e4f2eb;
+  color: #205b48;
+  border-color: #b6cfc2;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-list-heading,
+    .finder-state label,
+    .finder .field > span,
+    .input-unit small,
+    .finder-detail dt,
+    .finder-detail dd
+  ) {
+  color: #49665e;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-map-title > span,
+    .map-tools button,
+    .table-link,
+    .inspector dd,
+    .metric b,
+    .ev-source,
+    .ev-summary-main span
+  ) {
+  color: #1a4837;
+}
+:root[data-theme="light"]
+  :is(
+    .finder-map-title small,
+    .map-caption,
+    .map-caption small,
+    .inspector-title p,
+    .inspector dt,
+    .confidence > span
+  ) {
+  color: #49665e;
+}
+:root[data-theme="light"]
+  :is(
+    .map-tools,
+    .finder-map .map-tools,
+    .statusbar,
+    .inspector,
+    .confidence,
+    .result-callout,
+    .snap-results,
+    .secondary,
+    th
+  ) {
+  background: #eff7f3;
+  color: #31554a;
+  border-color: #c1d4cb;
+}

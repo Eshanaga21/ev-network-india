@@ -38,7 +38,7 @@ ALIASES = {
     "ev network": "operator",
     "type": "source_type",
 }
-MAX_RECORDS = 2000
+MAX_RECORDS = 15000
 
 
 def read_records(content: bytes, filename: str) -> list[dict]:

@@ -17,6 +17,11 @@ def main():
     dataset = store.load()
     assert dataset, "Import a real dataset through the UI first."
     metadata = dataset["metadata"]
+    if metadata.get("bee_preparation"):
+        from scripts.verify_bee_dataset import main as verify_bee
+
+        verify_bee()
+        return
     raw = (store.root / "snapshots" / metadata["snapshot_id"] / "source.raw").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == metadata["raw_sha256"]
     stations = dataset["stations"]

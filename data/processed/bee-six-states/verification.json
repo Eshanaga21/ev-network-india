@@ -1,0 +1,81 @@
+{
+  "validation": "passed",
+  "checked_date": "2026-10-12",
+  "checks": [
+    "raw rows partition exactly into accepted, duplicates and exclusions",
+    "accepted source row IDs unique",
+    "location IDs unique",
+    "all accepted rows referenced exactly once by location groups",
+    "each state CSV reconciles with the combined locations CSV",
+    "all 1159 pages have parsed tables with expected 12-column structure",
+    "six sample source rows matched by independent pypdf text extraction"
+  ],
+  "sample_pdf_text_checks": [
+    {
+      "state": "Uttar Pradesh",
+      "pdf_page": 1057,
+      "matched_fields": [
+        "operator",
+        "location",
+        "latitude",
+        "longitude",
+        "connector_type_source"
+      ]
+    },
+    {
+      "state": "Delhi",
+      "pdf_page": 63,
+      "matched_fields": [
+        "operator",
+        "location",
+        "latitude",
+        "longitude",
+        "connector_type_source"
+      ]
+    },
+    {
+      "state": "Rajasthan",
+      "pdf_page": 873,
+      "matched_fields": [
+        "operator",
+        "location",
+        "latitude",
+        "longitude",
+        "connector_type_source"
+      ]
+    },
+    {
+      "state": "Haryana",
+      "pdf_page": 193,
+      "matched_fields": [
+        "operator",
+        "location",
+        "latitude",
+        "longitude",
+        "connector_type_source"
+      ]
+    },
+    {
+      "state": "Punjab",
+      "pdf_page": 852,
+      "matched_fields": [
+        "operator",
+        "location",
+        "latitude",
+        "longitude",
+        "connector_type_source"
+      ]
+    },
+    {
+      "state": "Madhya Pradesh",
+      "pdf_page": 639,
+      "matched_fields": [
+        "operator",
+        "location",
+        "latitude",
+        "longitude",
+        "connector_type_source"
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@ from pathlib import Path
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "data/vehicles/catalog.json"
 CONNECTORS = {"CCS2", "Type2", "CHAdeMO", "GB/T DC", "GB/T AC", "CCS1", "Type1", "NACS"}
 DC_CONNECTORS = {"CCS2", "CHAdeMO", "GB/T DC", "CCS1"}
+LIGHT_EV_CONNECTORS = {"LEV AC", "LEV DC"}
 
 
 def catalog():
@@ -53,6 +54,8 @@ def connectors(value):
         "type1": "Type1",
         "j1772": "Type1",
         "nacs": "NACS",
+        "levac": "LEV AC",
+        "levdc": "LEV DC",
     }
     tokens = value if isinstance(value, list) else re.split(r"[,;|+]", str(value))
     known, unresolved = set(), False
@@ -74,6 +77,12 @@ def compatibility(profile, station):
             "status": "compatible",
             "connectors": sorted(common),
             "explanation": "Matching documented connector type; availability and working condition still need checking.",
+        }
+    if vehicle and station_types and not missing and station_types <= LIGHT_EV_CONNECTORS:
+        return {
+            "status": "incompatible",
+            "connectors": [],
+            "explanation": "Only light-EV connectors are documented here; no matching car connector or adapter is documented.",
         }
     if (
         vehicle

@@ -1,0 +1,49 @@
+{
+  "checked_date": "2026-10-12",
+  "snapshot_id": "2ce852f3406b4a17bf855ad0488f004a",
+  "previous_snapshot_preserved": "2ee144cf5153486e90e9cd0ba969a857",
+  "source_name": "Bureau of Energy Efficiency — six-state charging locations (26 Oct 2025)",
+  "source_data_as_of": "2025-10-26",
+  "source_csv_sha256": "3444748ccae2e358b56837913cce39804b747dacacf6b1bb7e673acb542d839e",
+  "source_pdf_sha256": "f519218fa96a04f57b3c56e919a8045133e7df1307a77710cca0076ab25b6882",
+  "active_station_locations": 8561,
+  "regional_counts": {
+    "Uttar Pradesh": 2311,
+    "Delhi": 1974,
+    "Rajasthan": 1509,
+    "Haryana": 921,
+    "Punjab": 700,
+    "Madhya Pradesh": 1146
+  },
+  "compatibility_for_complete_ccs2_type2_car_profile": {
+    "incompatible": 4189,
+    "unknown": 2636,
+    "compatible": 1736
+  },
+  "checks": {
+    "source_hash_matches": true,
+    "unique_derived_location_ids": true,
+    "all_six_state_counts_match_preparation": true,
+    "source_connector_and_page_references_preserved": true,
+    "unknown_live_availability_tariffs_and_power_preserved": true,
+    "full_dataset_road_trip_without_distance_matrix": true,
+    "academic_limit_before_matrix_allocation": true,
+    "filtered_city_analysis": {
+      "state": "Uttar Pradesh",
+      "city": "Kanpur",
+      "stations": 6
+    },
+    "active_snapshot_unchanged_by_verification": true
+  },
+  "verification_elapsed_seconds": 4.144,
+  "road_provider_check": "Local deterministic provider fixture; no live directions request or billable API call.",
+  "browser_checks": {
+    "desktop": "1280x720: BEE source details, total and state counts, Google Maps clusters, compatible-only Delhi filter and original connector/PDF page references verified.",
+    "mobile": "390x844: Punjab count 700, responsive map and selector verified; document width and viewport both 390px.",
+    "screenshots": [
+      "docs/screenshots/bee-source-counts-desktop.jpg",
+      "docs/screenshots/bee-finder-mobile.jpg"
+    ],
+    "live_road_api": "No new live directions requests; route transport verified using a local fixture against the active dataset."
+  }
+}

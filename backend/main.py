@@ -65,7 +65,7 @@ def create_app(data_dir=None):
             )
         return regional_dataset(dataset)
 
-    def context(request):
+    def context(request, *, graph_edges=True):
         dataset = active()
         stations = [
             s
@@ -86,10 +86,11 @@ def create_app(data_dir=None):
             request.state,
             request.city,
             request.search,
+            graph_edges,
         )
         with cache_lock:
             if key not in graph_cache:
-                graph_cache[key] = engine.build_graph(stations, request.graph)
+                graph_cache[key] = engine.build_graph(stations, request.graph, edges=graph_edges)
                 if len(graph_cache) > 12:
                     graph_cache.popitem(last=False)
             graph = graph_cache[key]
@@ -177,7 +178,8 @@ def create_app(data_dir=None):
                     )
                 }
             )
-        _, graph, audit = context(request)
+        # Road planning needs source nodes, not a quadratic proximity graph.
+        _, graph, audit = context(request, graph_edges=False)
         provider = get_provider()
         warning = None
         if provider:
@@ -203,6 +205,7 @@ def create_app(data_dir=None):
                         "charging_plan": result["charging_plan"],
                     },
                 }
+        _, graph, audit = context(request)
         result = engine.route(graph, request)
         if warning:
             result["road_error"] = warning

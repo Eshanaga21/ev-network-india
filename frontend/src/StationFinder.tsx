@@ -44,6 +44,12 @@ import {
   type Preferences,
 } from "./vehicles";
 import "./finder.css";
+import ThemeToggle from "./theme";
+import CostComparison, {
+  TripCostComparison,
+  readPrices,
+  type Prices,
+} from "./CostComparison";
 
 export default function StationFinder({
   dataset,
@@ -54,6 +60,16 @@ export default function StationFinder({
 }) {
   const sidebar = useRef<HTMLElement>(null);
   const [mode, setMode] = useState<"find" | "trip">("find");
+  const [costOpen, setCostOpen] = useState(false);
+  const [prices, setPrices] = useState<Prices>(readPrices);
+  const updatePrices = (next: Prices) => {
+    setPrices(next);
+    try {
+      localStorage.setItem("ev-network-cost-prices", JSON.stringify(next));
+    } catch {
+      /* Keep this session's prices. */
+    }
+  };
   useEffect(() => {
     sidebar.current?.scrollTo({ top: 0 });
   }, [mode]);
@@ -232,11 +248,28 @@ export default function StationFinder({
           UP · Delhi · Rajasthan · Haryana · Punjab · MP
         </span>
         <div className="finder-header-actions">
-          <button onClick={() => setPanel("source")}>
+          <ThemeToggle />
+          <button
+            onClick={() => setCostOpen(true)}
+            aria-label="Calculate charging costs and savings"
+            title="Calculate charging costs and savings"
+          >
+            <Zap size={15} />
+            <span>Cost & savings</span>
+          </button>
+          <button
+            onClick={() => setPanel("source")}
+            aria-label="About station data"
+            title="About station data"
+          >
             <Database size={15} />
             <span>Our data</span>
           </button>
-          <button onClick={() => setPanel("tools")}>
+          <button
+            onClick={() => setPanel("tools")}
+            aria-label="Open advanced tools"
+            title="Open advanced tools"
+          >
             <Settings2 size={15} />
             <span>Project tools</span>
           </button>
@@ -714,6 +747,17 @@ export default function StationFinder({
                           ? ` ${result.battery.stops} modeled charging stop(s). ${result.battery.charging_time_min == null ? "Charging time unknown: required power or compatibility data is missing." : `Estimated charging: ${format(result.battery.charging_time_min)} min, using documented limits and your average-power assumption.`}`
                           : " No charging stops modeled."}
                       </p>
+                      <TripCostComparison
+                        distance={result.distance_km}
+                        consumption={
+                          result.battery.assumptions.consumption_kwh_100km
+                        }
+                        efficiency={
+                          result.battery.assumptions.charge_efficiency
+                        }
+                        prices={prices}
+                        onPrices={updatePrices}
+                      />
                       {result.battery.conditional_charging && (
                         <Notice>
                           Conditional charging plan: one or more stops have
@@ -1026,16 +1070,31 @@ export default function StationFinder({
                   . Check before travelling.
                 </p>
                 {station.address && <p>{station.address}</p>}
+                {station.source_connector_types && (
+                  <p>Source connectors: {station.source_connector_types}</p>
+                )}
                 <small>
-                  {station.station_id_origin === "derived record hash"
-                    ? `Internal record · source row ${station.source_row}`
-                    : `Source record ${station.station_id}`}
+                  {station.station_id_origin === "derived location group"
+                    ? `Reported location group · BEE PDF page(s) ${station.source_pdf_pages}`
+                    : station.station_id_origin === "derived record hash"
+                      ? `Internal record · source row ${station.source_row}`
+                      : `Source record ${station.station_id}`}
                 </small>
               </details>
             </article>
           )}
         </section>
       </main>
+      {costOpen && (
+        <CostComparison
+          consumption={vehicle.consumption_kwh_100km}
+          efficiency={vehicle.charge_efficiency}
+          vehicleName={spec ? `${spec.manufacturer} ${spec.model}` : undefined}
+          prices={prices}
+          onPrices={updatePrices}
+          onClose={() => setCostOpen(false)}
+        />
+      )}
       {vehicleSelector && (
         <VehicleSelector
           catalog={catalog}
@@ -1068,6 +1127,35 @@ export default function StationFinder({
                 records are not live availability.
               </p>
               <p>{dataset.metadata.source_name}</p>
+              {dataset.metadata.bee_preparation && (
+                <>
+                  <p>
+                    Published snapshot: 26 October 2025. Reported location
+                    groups include cars and light EVs. Only documented connector
+                    matches appear when compatible-only search is enabled.
+                  </p>
+                  <p className="finder-small-note">
+                    Prepared from{" "}
+                    {
+                      dataset.metadata.bee_preparation
+                        .six_state_raw_charger_rows
+                    }{" "}
+                    charger rows:{" "}
+                    {dataset.metadata.bee_preparation.duplicate_charger_rows}{" "}
+                    repeated rows removed and{" "}
+                    {dataset.metadata.bee_preparation.excluded_charger_rows}{" "}
+                    rows excluded for coordinate issues. Locations have not been
+                    verified on site. Tariffs and live availability are unknown.
+                  </p>
+                  <a
+                    href={dataset.metadata.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View BEE source publication
+                  </a>
+                </>
+              )}
               <div className="finder-source-counts">
                 {REGIONS.map((region) => (
                   <div key={region}>
@@ -1093,9 +1181,9 @@ export default function StationFinder({
               )}
               {!!dataset.metadata.derived_id_records && (
                 <p className="finder-small-note">
-                  This file has no publisher station IDs. Internal record keys
-                  are derived from source-row hashes. Exact repeated rows were
-                  removed. The raw type codes have no supplied definition.
+                  {dataset.metadata.bee_preparation
+                    ? "The publisher provides no stable station IDs. Location groups use the same source state, operator, address and GPS coordinates. Different labels or operators remain separate, including at identical coordinates. Original connector descriptions and PDF page references are retained."
+                    : "This file has no publisher station IDs. Internal record keys are derived from source-row hashes. Exact repeated rows were removed. The raw type codes have no supplied definition."}
                 </p>
               )}
               <small>

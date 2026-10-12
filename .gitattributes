@@ -5,3 +5,7 @@ data/raw/* -text
 docs/screenshots/* -text
 frontend/public/*.woff -text
 frontend/public/*.woff2 -text
+
+# Prepared-file checksums require identical bytes on every operating system.
+data/processed/** -text
+data/processed/**/*.csv whitespace=trailing-space,space-before-tab,cr-at-eol

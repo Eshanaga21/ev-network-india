@@ -14,6 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 import { request } from "./api";
+import ThemeToggle from "./theme";
 import { ExportButtons, Loading, Notice, Table } from "./shared";
 const fields = [
   "station_id",
@@ -106,6 +107,7 @@ export default function Onboarding() {
         <span className="local-badge">
           <i /> LOCAL ANALYSIS WORKSPACE
         </span>
+        <ThemeToggle />
       </header>
       <main className="onboard-main">
         <div className="onboard-story">
@@ -184,7 +186,7 @@ export default function Onboarding() {
             <strong>
               {file ? file.name : "Drop your station dataset here"}
             </strong>
-            <span>CSV or JSON · up to 15 MB / 2,000 records</span>
+            <span>CSV or JSON · up to 15 MB / 15,000 records</span>
             <button className="primary" onClick={() => input.current?.click()}>
               Choose a file <ArrowRight size={15} />
             </button>

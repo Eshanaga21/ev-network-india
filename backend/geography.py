@@ -31,7 +31,7 @@ def polygons():
     return result
 
 
-@lru_cache(maxsize=8192)
+@lru_cache(maxsize=32768)
 def in_requested_region(latitude, longitude):
     lon_scale = 111.32 * math.cos(math.radians(latitude))
     for polygon, (west, south, east, north) in polygons():

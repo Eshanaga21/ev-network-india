@@ -16,7 +16,9 @@ export default function GoogleMapView({
   region,
   enteredPoints,
   onPointPick,
+  theme = "dark",
 }: {
+  theme?: "light" | "dark";
   config: { browser_key: string; map_id: string };
   stations: Station[];
   route: any;
@@ -50,7 +52,10 @@ export default function GoogleMapView({
           center: { lat: 28.6, lng: 77.2 },
           zoom: 6,
           mapId: config.map_id,
-          colorScheme: maps.ColorScheme?.DARK,
+          colorScheme:
+            theme === "light"
+              ? maps.ColorScheme?.LIGHT
+              : maps.ColorScheme?.DARK,
           mapTypeControl: false,
           streetViewControl: false,
           fullscreenControl: true,
@@ -78,7 +83,7 @@ export default function GoogleMapView({
       map.current = null;
       window.removeEventListener("ev-google-auth-error", authFailure);
     };
-  }, [config.browser_key, config.map_id]);
+  }, [config.browser_key, config.map_id, theme]);
   const pointsKey = JSON.stringify(enteredPoints);
   useEffect(() => {
     if (!ready || !sdk.current || !map.current) return;

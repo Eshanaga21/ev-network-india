@@ -196,11 +196,15 @@ export function connectorCompatibility(
     type1: "Type1",
     j1772: "Type1",
     nacs: "NACS",
+    levac: "LEV AC",
+    levdc: "LEV DC",
   };
   const tokens = (station.connector_type || "")
     .split(/[,;|+]/)
     .map((v) => aliases[v.replace(/[\s_\-()]/g, "").toLowerCase()]);
   if (tokens.some((t) => spec.connector_types.includes(t))) return "compatible";
+  if (tokens.length && tokens.every((t) => t === "LEV AC" || t === "LEV DC"))
+    return "incompatible";
   if (
     tokens.length &&
     tokens.every(Boolean) &&

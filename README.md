@@ -10,7 +10,9 @@ The default screen has only **Find stations** and **Plan a trip**. Search by cit
 
 The application is restricted to **Uttar Pradesh, Delhi, Rajasthan, Haryana, Punjab and Madhya Pradesh**. This restriction is enforced in the backend dataset response, graphs, routes, comparisons, reports and exports. Original imported snapshots are preserved. State aliases such as UP, MP and NCT of Delhi are recognized; absent state values are not inferred from coordinates.
 
-The active user-supplied `archive.zip` contains **282 usable regional records**: UP 65, Delhi 102, Rajasthan 42, Haryana 49, Punjab 16 and Madhya Pradesh 8. From 1,547 raw rows, 14 fail coordinate validation and 202 repeated valid rows are removed, leaving 1,331 source records. Of the 350 rows labeled with the selected states, 68 have coordinates clearly outside the regional map and are flagged and excluded. The remaining 981 records have other or ambiguous state labels. The original source and previous snapshot are preserved. Consumer trips use a configured road provider with labeled geographic fallback; charging availability remains unverified.
+The active source is the [BEE public charging dataset](https://beeindia.gov.in/WriteReadData/RTF1984/EV_PCS_Data_29277.pdf), dated **26 October 2025**, with **8,561 reported location groups**: UP 2,311, Delhi 1,974, Rajasthan 1,509, Haryana 921, Punjab 700 and Madhya Pradesh 1,146. Preparation selected 12,634 charger rows, quarantined 70 coordinate problems and removed 3,476 repeated rows, leaving 9,088 source charger records grouped by state, operator, location text and identical GPS. These are derived groups rather than ground-verified physical station identities. **4,189 groups list only light-EV connectors**; the total is not a car-compatible station census. The prior 282-record archive snapshot is preserved locally.
+
+Explicit CCS-II/Type-II connector descriptions are mapped for vehicle compatibility; unspecified CCS and Bharat labels remain unresolved. Light-EV-only sites cannot be selected as charging stops for car profiles. Source connector descriptions, charger-rating text, connector counts and PDF page references remain available. The PDF rating headers do not specify units, so ratings are not inferred as kW; connector counts are not interpreted as charger-device counts. Tariffs and live availability remain unknown. Consumer road trips use the full dataset without allocating an all-pairs proximity graph; exact academic graph calculations retain a 2,000-station bound and require a narrower filter for larger inputs.
 
 State labels and coordinates in this dataset are sometimes inconsistent. A regional plausibility check uses the local Natural Earth polygons plus a disclosed 5 km border tolerance; it never repairs GPS or infers a missing state. These cartographic outlines are not official boundaries. `Delhi NCR` is ambiguous across multiple states and is not silently treated as Delhi. The `Harayana` spelling is normalized to Haryana, and case/whitespace aliases are handled.
 
@@ -72,20 +74,32 @@ CSV columns and JSON keys can be mapped to:
 
 `station_id, station_name, latitude, longitude, city, state, country, operator, status, availability, connector_type, num_chargers, charging_power_kw`
 
-The schema download contains headers only. JSON accepts an array, or an object containing a `data`/`stations` array. File limit: 15 MB; import limit: 2,000 records. Preview tokens expire after 30 minutes. No file is silently truncated into a smaller production dataset.
+The schema download contains headers only. JSON accepts an array, or an object containing a `data`/`stations` array. File limit: 15 MB; import limit: 15,000 records. Exact network analysis and geographic fallback support up to 2,000 filtered stations; station browsing and provider road trips use the full import. Preview tokens expire after 30 minutes. No file is silently truncated into a smaller production dataset.
 
-### Current user-supplied dataset
+### Current BEE dataset
 
-The active source is `ev-charging-stations-india.csv` from the user-provided `archive.zip`. No publisher URL, collection date or live freshness was supplied; no affiliation with E-Amrit or Tata is asserted. The original CSV is copied without changes to `data/raw/ev-charging-stations-india.csv`. Address fields are preserved and searchable. The numeric `type` codes are stored as `source_type`, without inferring connectors, power, ports or availability.
+Prepared files and cleaning rules are in `data/processed/bee-six-states/`. Activate the reviewed six-state locations explicitly:
+
+```sh
+python3 -m scripts.import_bee_dataset
+python3 -m scripts.import_bee_dataset --activate
+python3 -m scripts.verify_loaded_dataset
+```
+
+The importer verifies prepared-file checksums and reconciles source charger records and all state counts before activation. Every import creates an immutable snapshot. Original source bytes, source PDF hash and page references are preserved. The active snapshot remains local and ignored by Git; a teammate can reproduce activation from the prepared files. Audit and verification: `docs/verification/bee-dataset-import.json` and `docs/verification/bee-loaded-dataset-verification.json`.
+
+### Historical user-supplied archive dataset
+
+The previous source was `ev-charging-stations-india.csv` from the user-provided `archive.zip`. No publisher URL, collection date or live freshness was supplied; no affiliation with E-Amrit or Tata is asserted. The original CSV is copied without changes to `data/raw/ev-charging-stations-india.csv`. Address fields are preserved and searchable. The numeric `type` codes are stored as `source_type`, without inferring connectors, power, ports or availability.
 
 The file has no station ID column. Opt-in import creates deterministic internal record keys from SHA-256 of each source row, clearly marked as derived rather than publisher identifiers. Identical source rows collapse; differently named AC/DC rows at the same coordinate remain distinct records. Missing source-ID handling stays strict by default for other imports; enable the labeled internal-ID checkbox before importing this CSV.
 
-- Active snapshot: `2ee144cf5153486e90e9cd0ba969a857`.
+- Preserved archive snapshot: `2ee144cf5153486e90e9cd0ba969a857`.
 - Imported UTC: `2026-10-04T08:59:31.325637+00:00`.
 - Raw SHA-256: `c6a8f921195877a474c47c7a524e117bc72e18f6ba4f39a4f73865bcd1092f20`.
 - Full audit including all rejected, duplicate and geographic-conflict rows: `docs/verification/user-dataset-import.json`.
 
-Reproduce the reviewed import locally:
+Reproduce the historical archive import locally (activation replaces the active BEE snapshot):
 
 ```sh
 python3 -m scripts.import_user_archive /path/to/archive.zip
@@ -195,7 +209,7 @@ npm run build
 npm audit
 ```
 
-The loaded-dataset verification script is specifically for the supplied documented extract and checks its actual snapshot without importing test fixtures. Automated tests use isolated temporary stores; fixture records are confined to tests and never bundled into production. Latest verification passed **79 backend tests and 25 frontend tests**, lint, formatting and TypeScript/production build. Google adapter tests use mocked transport; separate live checks verified the basemap, Places and Routes, including the complete trip endpoint. The clustering library is `@googlemaps/markerclusterer`, recommended by Google; the dependency audit found 0 npm vulnerabilities. Two Python test-client deprecation warnings and Vite's large mapping-console chunk warning remain visible. Evidence is in `docs/verification/` and `IMPLEMENTATION_REVIEW.md`.
+The loaded-dataset verification script checks the active BEE snapshot or the historical archive extract without replacing the source with fixtures. Its BEE road-provider check uses explicitly labeled local transport to avoid billable requests. Automated tests use isolated temporary stores; fixture records are confined to tests and never bundled into production. Latest verification passed **114 backend tests and 36 frontend tests**, lint, formatting and TypeScript/production build. Google adapter tests use mocked transport; separate live checks verified the basemap, Places and Routes, including the complete trip endpoint. The clustering library is `@googlemaps/markerclusterer`, recommended by Google; the dependency audit found 0 npm vulnerabilities. Two Python test-client deprecation warnings and Vite's large mapping-console chunk warning remain visible. Evidence is in `docs/verification/` and `IMPLEMENTATION_REVIEW.md`.
 
 Browser checks covered reviewed upload, real map, connected/no-path routes, charging timeline, graph controls, outage copy, index, clustering, gap candidates, addition, comparison, save/reset/load and explanation focus/Escape. Tablet 1024×768 and mobile 390×844 had no page-level horizontal overflow. Map interaction uses WebGL; the table alternative remains available if map rendering fails. Browser download completion was not observable through the in-app browser's download-event API; export contents/click/revoke behavior were separately unit-tested and the HTML report was independently generated and verified.
 
@@ -205,7 +219,7 @@ Browser checks covered reviewed upload, real map, connected/no-path routes, char
 
 ## Limits and responsible interpretation
 
-This is a production-buildable **local academic application**, not a deployed multi-user service or a national planning authority. It has no authentication, distributed jobs, live telemetry, production observability or high-volume benchmarking. Exact graph calculations are bounded at 2,000 input records. Inputs are validated and outputs audited, but source truth cannot be established from a coordinate range check. Natural Earth boundaries are cartographic, not official Indian territorial boundaries. Candidates may fall on water or unsuitable land; no land, grid, road, demand, population, traffic, availability, queue, weather, elevation or investment suitability is inferred. Model feasibility assumes charging can occur at selected nodes using entered power; connector compatibility and source power are unverified for this extract. The historical E-Amrit refresh remains unavailable. Public Photon and OSRM were live-tested; demo availability and address coverage are not guaranteed. Gemini authentication remains pending. Snapshot files are application-immutable, not cryptographically tamper-proof or encrypted; retain backups if needed. The mapping console still produces a Vite chunk-size warning, documented rather than suppressed.
+This is a production-buildable **local academic application**, not a deployed multi-user service or a national planning authority. It has no authentication, distributed jobs, live telemetry, production observability or high-volume benchmarking. Imports support 15,000 records; exact graph calculations are bounded at 2,000 filtered records. Road-provider trips do not construct the proximity graph. If a road provider fails on a larger input, narrow the city/state/search filter for geographic fallback. Inputs are validated and outputs audited, but source truth cannot be established from a coordinate range check. Natural Earth boundaries are cartographic, not official Indian territorial boundaries. Candidates may fall on water or unsuitable land; no land, grid, road, demand, population, traffic, availability, queue, weather, elevation or investment suitability is inferred. Model feasibility assumes charging can occur at selected nodes using entered power; connector compatibility and source power are unverified for this extract. The historical E-Amrit refresh remains unavailable. Public Photon and OSRM were live-tested; demo availability and address coverage are not guaranteed. Gemini authentication remains pending. Snapshot files are application-immutable, not cryptographically tamper-proof or encrypted; retain backups if needed. The mapping console still produces a Vite chunk-size warning, documented rather than suppressed.
 
 
 ## Selected EV and local garage
@@ -214,6 +228,12 @@ This is a production-buildable **local academic application**, not a deployed mu
 
 Multiple vehicles, defaults and removal are stored locally under `ev-network-garage-v1`. Each profile retains its own planning settings. The default is selected on refresh; changing vehicle or driving inputs invalidates consumer trip results. Browsing without selection remains available. `GET /api/vehicles` supplies the catalogue; `POST /api/trip` and `/api/trip/explain` require exactly one catalogue ID or validated custom `ev_profile`. Catalogue capacity is resolved by the backend. Academic numerical geographic experiments retain their original manually configured model.
 
-Personalised range uses capacity, current charge, reserve and consumption, never certified range. Known compatible connectors can be filtered; missing data shows Compatibility unknown. Charging requires both station and vehicle limits for a time estimate, uses their lower limit and explicitly disclosed average-power/efficiency assumptions, and supports source-backed SOC-band models when documented. No full curve is claimed for current catalogue editions. Costs are only estimated from known tariffs. The active station extract lacks connector/power/tariff observations, so compatibility, session time and charging cost remain unknown there.
+Personalised range uses capacity, current charge, reserve and consumption, never certified range. Known compatible connectors can be filtered; missing data shows Compatibility unknown. Charging requires both station and vehicle limits for a time estimate, uses their lower limit and explicitly disclosed average-power/efficiency assumptions, and supports source-backed SOC-band models when documented. No full curve is claimed for current catalogue editions. Costs are only estimated from known tariffs. The BEE extract supplies connector descriptions, enabling confirmed compatibility filters; ambiguous types remain unknown. Source rating text has no explicit kW unit and tariffs are absent, so charging time and station charging cost remain unknown.
 
 See the [vehicle verification report](docs/verification/vehicle-selection-report.md) for sources, edition differences, calculation rules, desktop/mobile evidence and tests. Current checks: 107 backend tests, 31 frontend tests, lint, formatting and build pass. This upgrade was run locally and was not pushed or deployed.
+
+## Themes and charging-cost comparison
+
+The header includes a light/dark theme button and **Cost & savings**. Theme and entered charging/petrol prices are saved in this browser. The calculator compares EV charging spend, petrol-car spend and savings for the same distance, using editable daily kilometres, years, consumption, charging efficiency and petrol mileage. Charging and petrol prices start blank and must be entered; zero prices are allowed. Selected-vehicle consumption and charging efficiency initialise the calculator. Negative savings are shown as extra EV cost. This estimates energy running costs only, excluding purchase, insurance, maintenance, tolls and parking.
+
+Successful consumer trip results include an expandable EV-versus-petrol comparison using the calculated road distance and the trip's consumption/efficiency assumptions. Entered electricity rates are assumptions, not observed station tariffs. This comparison includes the starting battery energy used; actual charging-stop bills remain unknown where station tariffs are missing. See the [theme and cost verification report](docs/verification/theme-cost-report.md) for formulas and checks.

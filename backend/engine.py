@@ -10,6 +10,7 @@ from sklearn.cluster import DBSCAN
 from backend.models import GraphSettings
 
 EARTH_KM = 6371.0088
+MAX_GRAPH_RECORDS = 2000
 
 
 def haversine(a, b):
@@ -33,10 +34,18 @@ def distances(stations):
     return 2 * EARTH_KM * np.arcsin(np.sqrt(np.clip(h, 0, 1)))
 
 
-def build_graph(stations, settings: GraphSettings):
+def build_graph(stations, settings: GraphSettings, *, edges=True):
+    if edges and len(stations) > MAX_GRAPH_RECORDS:
+        raise ValueError(
+            f"Exact network calculations support up to {MAX_GRAPH_RECORDS:,} stations. "
+            "Choose a city, state or search filter to reduce the network. "
+            "Station browsing and provider road trips can use the full dataset."
+        )
     graph = nx.Graph()
     for s in stations:
         graph.add_node(s["station_id"], **s)
+    if not edges:
+        return graph
     matrix = distances(stations)
     for i, station in enumerate(stations):
         if settings.method == "radius":

@@ -141,4 +141,17 @@ describe("vehicle planning and local garage", () => {
       ),
     ).toBe("unknown");
   });
+  it("excludes light-EV-only connectors for car profiles while retaining ambiguous CCS", () => {
+    const partial = { ...small, connector_coverage_complete: false };
+    for (const connector_type of ["LEV AC", "LEV DC", "LEV AC;LEV DC"])
+      expect(connectorCompatibility(partial, { connector_type })).toBe(
+        "incompatible",
+      );
+    expect(
+      connectorCompatibility(partial, { connector_type: "LEV DC;CCS2" }),
+    ).toBe("compatible");
+    expect(connectorCompatibility(partial, { connector_type: "CCS" })).toBe(
+      "unknown",
+    );
+  });
 });
